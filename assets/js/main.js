@@ -1,3 +1,7 @@
+let score = {
+    player: 3,
+    cmp: 3
+};
 
 /**
  * @returns player choice
@@ -111,17 +115,26 @@ function cmpChoice() {
     if (player === '') {
         label.textContent = 'You must choose an option'
     } else {
-        label.textContent = ''
-        winner = whoWins(player, cmp)
-        console.log(winner)
+        label.textContent = '';
+        winner = whoWins(player, cmp);
+        totalPoints(score, winner)
+
     }
  }
 
  /**
  * @returns total points of each player on the game. 
  */
-function totalPoints() {
-
+function totalPoints(score, winner) {
+    if(winner === 'player') {
+        score.cmp = score.cmp - 1
+    } else if (winner === 'cmp') {
+        score.player = score.player -1
+    } else {
+        return null
+    }
+    console.log(score)
+    return score
 }
 
 /**
