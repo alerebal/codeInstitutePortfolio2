@@ -2,6 +2,7 @@ let score = {
     player: 3,
     cmp: 3
 };
+let playing = true;
 
 /**
  * @returns player choice
@@ -118,8 +119,10 @@ function cmpChoice() {
         message.textContent = '';
         winner = whoWins(player, cmp);
         totalPoints(score, winner);
-        displayScore(winner);
-        console.log(winner)
+        finalWinner(score);
+        if(!playing) {
+            document.getElementById('playButton').style.visibility = 'hidden';
+        }
     }
  }
 
@@ -135,6 +138,7 @@ function totalPoints(score, winner) {
         displayMessageScore(null, null)
         return null
     }
+    displayScore(winner);
     return score
 }
 
@@ -196,6 +200,14 @@ function displayMessageScore(winner, loserPoints) {
 /**
  * @returns who obtains the final victory
  */
- function finalWinner() {
-
+ function finalWinner(score) {
+    if(score.player === 0) {
+        playing = false;
+        return 'cmp'
+    } else if (score.cmp === 0) {
+        playing = false;
+        return 'player'
+    } else {
+        return null
+    }
  }
