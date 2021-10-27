@@ -110,15 +110,16 @@ function cmpChoice() {
  function battle() {
     let player = playerChoice();
     let cmp = cmpChoice();
-    let label = document.getElementById('game-message');
+    let message = document.getElementById('game-message');
     let winner;
     if (player === '') {
-        label.textContent = 'You must choose an option'
+        message.textContent = 'You must choose an option'
     } else {
-        label.textContent = '';
+        message.textContent = '';
         winner = whoWins(player, cmp);
-        totalPoints(score, winner)
-
+        totalPoints(score, winner);
+        displayScore(winner);
+        console.log(winner)
     }
  }
 
@@ -131,24 +132,65 @@ function totalPoints(score, winner) {
     } else if (winner === 'cmp') {
         score.player = score.player -1
     } else {
+        displayMessageScore(null, null)
         return null
     }
-    console.log(score)
     return score
 }
 
 /**
  * display the score on the side
  */
- function displayScore() {
-
+ function displayScore(winner) {
+    let cmpScore = document.getElementById('score-cmp');
+    let playerScore = document.getElementById('score-player');
+    if(winner === 'player') {
+        cmpScore.children[0].remove()
+        displayMessageScore(winner, cmpScore.children.length)
+    } else if (winner === 'cmp') {
+        playerScore.children[0].remove()
+        displayMessageScore(winner, playerScore.children.length)
+    } else {
+        return null
+    }
  }
 
  /**
  * display a message on the screen about game situation
  */
-function displayMessageScore() {
-
+function displayMessageScore(winner, loserPoints) {
+    let message = document.getElementById('game-message');
+    if(winner === 'player') {
+        switch(loserPoints) {
+            case 2:
+                message.textContent = 'Well done! 2 more wins and the game is yours';
+                break;
+            case 1:
+                message.textContent ='Almost there!! Just 1 more win';
+                break;
+            case 0:
+                message.textContent = 'Congratulations!!! You are the winner!!!'
+                break;
+            default:
+                ''
+        }
+    } else if(winner === 'cmp') {
+        switch(loserPoints) {
+            case 2:
+                message.textContent = 'Be carefull...';
+                break;
+            case 1:
+                message.textContent = 'OH... you cannot lose one more time!!';
+                break;
+            case 0:
+                message.textContent = 'That was bad luck, you lose the game';
+                break;
+            default:
+                ''
+        }
+    } else {
+        message.textContent = 'Play again'
+    }
 } 
 
 /**
