@@ -3,14 +3,39 @@
  * @returns player choice
  */
  function playerChoice() {
-
+    let choices = document.getElementsByTagName('form')[0]
+    let choice = choices.elements['played']
+    console.log(choice.value)
+    return choice.value
 }
 
 /**
  * @returns cmp choice
  */
 function cmpChoice() {
-
+    let choice;
+    let random = Math.floor(Math.random() * 5) + 1;
+    switch (random) {
+        case 1:
+            choice = 'rock';
+            break
+        case 2:
+            choice = 'paper'
+            break
+        case 3:
+            choice = 'scissors'
+            break
+        case 4:
+            choice = 'lizard'
+            break
+        case 5:
+            choice = 'spock'
+            break
+        default:
+            choice = 'rock'
+    }
+    console.log(choice)
+    return choice
 }
 
 /**
