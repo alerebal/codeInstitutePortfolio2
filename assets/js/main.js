@@ -5,7 +5,6 @@
  function playerChoice() {
     let choices = document.getElementsByTagName('form')[0]
     let choice = choices.elements['played']
-    console.log(choice.value)
     return choice.value
 }
 
@@ -34,22 +33,88 @@ function cmpChoice() {
         default:
             choice = 'rock'
     }
-    console.log(choice)
     return choice
 }
 
 /**
  * @returns determine who wins between the player and the cmp
  */
- function whoWins() {
-
+ function whoWins(player, cmp) {
+    if (player === cmp) {
+        return null
+    } else if (player === 'rock') {
+        switch (cmp) {
+            case 'paper':
+                return 'cmp'
+            case 'scissors':
+                return 'player'
+            case 'lizard':
+                return 'player'
+            case 'spock':
+                return 'cmp'
+        }
+    } else if (player === 'paper') {
+        switch (cmp) {
+            case 'rock':
+                return 'player'
+            case 'scissors':
+                return 'cmp'
+            case 'lizard':
+                return 'cmp'
+            case 'spock':
+                return 'player'
+        }
+    } else if (player === 'scissors') {
+        switch (cmp) {
+            case 'paper':
+                return 'player'
+            case 'rock':
+                return 'cmp'
+            case 'lizard':
+                return 'player'
+            case 'spock':
+                return 'cmp'
+        }
+    } else if (player === 'lizard') {
+        switch (cmp) {
+            case 'paper':
+                return 'player'
+            case 'scissors':
+                return 'cmp'
+            case 'rock':
+                return 'cmp'
+            case 'spock':
+                return 'player'
+        }
+    } else if (player === 'spock') {
+        switch (cmp) {
+            case 'paper':
+                return 'cmp'
+            case 'scissors':
+                return 'player'
+            case 'lizard':
+                return 'cmp'
+            case 'rock':
+                return 'player'
+        }
+    }
  }
 
 /**
  * determine who is the winner of the small game
  */
  function battle() {
-
+    let player = playerChoice();
+    let cmp = cmpChoice();
+    let label = document.getElementById('game-message');
+    let winner;
+    if (player === '') {
+        label.textContent = 'You must choose an option'
+    } else {
+        label.textContent = ''
+        winner = whoWins(player, cmp)
+        console.log(winner)
+    }
  }
 
  /**
