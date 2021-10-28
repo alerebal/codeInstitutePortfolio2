@@ -219,9 +219,7 @@ function displayMessageScore(winner, loserPoints) {
 function displayCmpChoice(choice) {
     let divToShow = document.getElementById('cmp-choice');
     let icon = `
-    <div class="icon">
         <i class="far fa-hand-${choice}"></i>
-    </div>
     `;
     console.log(divToShow)
     divToShow.innerHTML = icon
