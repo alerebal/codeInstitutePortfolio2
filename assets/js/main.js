@@ -38,6 +38,7 @@ function cmpChoice() {
         default:
             choice = 'rock'
     }
+    displayCmpChoice(choice)
     return choice
 }
 
@@ -211,3 +212,17 @@ function displayMessageScore(winner, loserPoints) {
         return null
     }
  }
+
+/**
+ * display the computer choice
+ */
+function displayCmpChoice(choice) {
+    let divToShow = document.getElementById('cmp-choice');
+    let icon = `
+    <div class="icon">
+        <i class="far fa-hand-${choice}"></i>
+    </div>
+    `;
+    console.log(divToShow)
+    divToShow.innerHTML = icon
+}
