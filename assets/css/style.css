@@ -28,8 +28,15 @@ fieldset {
 /* Cmp area */
 .cmp-area {
     height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: green 1px solid;
 }
+
+/* #cmp-choice {
+
+} */
 
 /* Play area */
 .play-area {
