@@ -5,10 +5,19 @@ let score = {
 let playerChoice;
 let playing = true;
 
+
 /**
  * assign value to playerChoice variable
  */
 function onPlayerChoice(choice) {
+    let btn = document.getElementById(choice)
+    // If there is other button selected change its class
+    let btnSelected = document.getElementsByClassName('selected')[0]
+    if (btnSelected) {
+        btnSelected.setAttribute('class', 'icon')
+    }
+    // give selected class to the button
+    btn.setAttribute('class', 'icon selected')
     playerChoice = choice
     displayChoice(choice, 'player')
 }
@@ -45,7 +54,7 @@ function cmpChoice() {
 /**
  * @returns determine who wins between the player and the cmp
  */
- function whoWins(player, cmp) {
+function whoWins(player, cmp) {
     if (player === cmp) {
         return null
     } else if (player === 'rock') {
@@ -104,37 +113,37 @@ function cmpChoice() {
                 return 'player'
         }
     }
- }
+}
 
 /**
  * determine who is the winner of the small game
  */
- function battle() {
+function battle() {
     let player = playerChoice;
-    let cmp = cmpChoice();
     let message = document.getElementById('game-message');
     let winner;
-    if (player === '') {
+    if (player === undefined) {
         message.textContent = 'You must choose an option'
     } else {
+        let cmp = cmpChoice();
         message.textContent = '';
         winner = whoWins(player, cmp);
         totalPoints(score, winner);
         finalWinner(score);
-        if(!playing) {
+        if (!playing) {
             document.getElementById('play-button').style.visibility = 'hidden';
         }
     }
- }
+}
 
- /**
- * @returns total points of each player on the game. 
- */
+/**
+* @returns total points of each player on the game. 
+*/
 function totalPoints(score, winner) {
-    if(winner === 'player') {
+    if (winner === 'player') {
         score.cmp = score.cmp - 1
     } else if (winner === 'cmp') {
-        score.player = score.player -1
+        score.player = score.player - 1
     } else {
         displayMessageScore(null, null)
         return null
@@ -146,10 +155,10 @@ function totalPoints(score, winner) {
 /**
  * display the score on the side
  */
- function displayScore(winner) {
+function displayScore(winner) {
     let cmpScore = document.getElementById('score-cmp');
     let playerScore = document.getElementById('score-player');
-    if(winner === 'player') {
+    if (winner === 'player') {
         cmpScore.children[0].remove()
         displayMessageScore(winner, cmpScore.children.length)
     } else if (winner === 'cmp') {
@@ -158,20 +167,20 @@ function totalPoints(score, winner) {
     } else {
         return null
     }
- }
+}
 
- /**
- * display a message on the screen about game situation
- */
+/**
+* display a message on the screen about game situation
+*/
 function displayMessageScore(winner, loserPoints) {
     let message = document.getElementById('game-message');
-    if(winner === 'player') {
-        switch(loserPoints) {
+    if (winner === 'player') {
+        switch (loserPoints) {
             case 2:
                 message.textContent = 'Well done! 2 more wins and the game is yours';
                 break;
             case 1:
-                message.textContent ='Almost there!! Just 1 more win';
+                message.textContent = 'Almost there!! Just 1 more win';
                 break;
             case 0:
                 message.textContent = 'Congratulations!!! You are the winner!!!'
@@ -179,8 +188,8 @@ function displayMessageScore(winner, loserPoints) {
             default:
                 ''
         }
-    } else if(winner === 'cmp') {
-        switch(loserPoints) {
+    } else if (winner === 'cmp') {
+        switch (loserPoints) {
             case 2:
                 message.textContent = 'Be carefull...';
                 break;
@@ -196,13 +205,13 @@ function displayMessageScore(winner, loserPoints) {
     } else {
         message.textContent = 'Play again'
     }
-} 
+}
 
 /**
  * @returns who obtains the final victory
  */
- function finalWinner(score) {
-    if(score.player === 0) {
+function finalWinner(score) {
+    if (score.player === 0) {
         playing = false;
         return 'cmp'
     } else if (score.cmp === 0) {
@@ -211,7 +220,7 @@ function displayMessageScore(winner, loserPoints) {
     } else {
         return null
     }
- }
+}
 
 /**
  * display selected choice
