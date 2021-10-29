@@ -10,3 +10,29 @@
     visibility: hidden;
     transition: ease-in-out 250ms;
 }
+
+.moveUp {
+    animation: movingUp ease-in-out 1s;
+}
+
+@keyframes movingUp {
+    from  {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+.moveDown {
+    animation: movingDown ease-in-out 1s;
+}
+
+@keyframes movingDown {
+    from  {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}

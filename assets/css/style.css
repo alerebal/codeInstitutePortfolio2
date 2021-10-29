@@ -27,6 +27,7 @@ fieldset {
 
 /* Cmp area */
 .cmp-area {
+    position: relative;
     height: 20vh;
     display: flex;
     justify-content: center;
@@ -34,8 +35,17 @@ fieldset {
     border: green 1px solid;
 }
 
-/* #cmp-choice {
+#cmp-display-choice {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+}
 
+/* #cmp-choice {
+    position: absolute;
+    bottom: 0;
 } */
 
 /* Play area */
@@ -130,10 +140,16 @@ aside {
 
 /* Player area */
 #player-display-choice {
+    position: relative;
     height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#player-choice {
+    position: absolute;
+    top: 0;
 }
 
 #player-choices {

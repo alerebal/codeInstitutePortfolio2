@@ -122,10 +122,16 @@ function battle() {
     let player = playerChoice;
     let message = document.getElementById('game-message');
     let winner;
+    let showPlayer = document.getElementById('player-choice');
+    let showCmp = document.getElementById('cmp-choice');
     if (player === undefined) {
         message.textContent = 'You must choose an option'
     } else {
         noDisplayButtons()
+        setTimeout(() => {
+            showPlayer.setAttribute('class', 'visible moveUp')
+            showCmp.setAttribute('class', 'visible moveDown')
+        }, 500)
         let cmp = cmpChoice();
         message.textContent = '';
         winner = whoWins(player, cmp);
@@ -136,7 +142,9 @@ function battle() {
         }
         setTimeout(() => {
             displayButtons()
-        }, 2000)
+            showPlayer.setAttribute('class', 'disappear')
+            showCmp.setAttribute('class', 'disappear')
+        }, 4000)
     }
 }
 
