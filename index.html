@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/movements.css">
     <title>Document</title>
 </head>
+
 <body>
     <h1 class="text-center">Rock-Paper-Scissors-Lizard-Spock Game</h1>
     <div class="game-area">
         <div class="cmp-area">
-            <!-- <div id="cmp-choice"></div> -->
-            <div >
+            <div>
                 <div class="icon" id="cmp-choice">
                 </div>
             </div>
@@ -43,51 +45,69 @@
             </aside>
         </div>
         <div class="player-area">
-            <button id="playButton" onclick="battle()">Play</button>
-            <form>
-                <fieldset id="field">
+            <button id="play-button" onclick="battle()">Play</button>
+            <div class="icon" id="player-choice"></div>
+            <!-- <form> -->
+                <div id="player-choices">
                     <div class="row first">
-                        <label for="rock">
-                            <input type="radio" name="played" id="rock" value="rock">
-                            <div class="icon">
+                        <!-- <div class="icon"> -->
+                            <button class="icon" data-type="rock">
                                 <i class="far fa-hand-rock"></i>
-                            </div>
-                        </label>
+                            </button>
+                            <!-- <label for="rock">
+                                <input type="radio" name="played" id="rock" value="rock" onchange="onChange('rock')">
+                                <i class="far fa-hand-rock"></i>
+                            </label> -->
+                        <!-- </div> -->
+
                     </div>
                     <div class="row second">
-                        <label for="paper">
-                            <input type="radio" name="played" id="paper" value="paper">
+                        <button class="icon" data-type="paper">
+                            <i class="far fa-hand-paper"></i>
+                        </button>
+                        <!-- <label for="paper">
+                            <input type="radio" name="played" id="paper" value="paper" onchange="onChange('paper')">
                             <div class="icon">
                                 <i class="far fa-hand-paper"></i>
                             </div>
-                        </label>
-                        <label for="scissors">
-                            <input type="radio" name="played" id="scissors" value="scissors">
+                        </label> -->
+                        <!-- <label for="scissors">
+                            <input type="radio" name="played" id="scissors" value="scissors" onchange="onChange('scissors')">
                             <div class="icon">
                                 <i class="far fa-hand-scissors"></i>
                             </div>
-                        </label>
+                        </label> -->
+                        <button class="icon" data-type="scissors">
+                            <i class="far fa-hand-scissors"></i>
+                        </button>
                     </div>
                     <div class="row third">
-                        <label for="lizard">
-                            <input type="radio" name="played" id="lizard" value="lizard">
+                        <button class="icon" data-type="lizard">
+                            <i class="far fa-hand-lizard"></i>
+                        </button>
+                        <!-- <label for="lizard">
+                            <input type="radio" name="played" id="lizard" value="lizard" onchange="onChange('lizard')">
                             <div class="icon">
                                 <i class="far fa-hand-lizard"></i>
                             </div>
                         </label>
                         <label for="spock">
-                            <input type="radio" name="played" id="spock" value="spock">
+                            <input type="radio" name="played" id="spock" value="spock" onchange="onChange('spock')">
                             <div class="icon">
                                 <i class="far fa-hand-spock"></i>
                             </div>
-                        </label>
+                        </label> -->
+                        <button class="icon" data-type="spock">
+                            <i class="far fa-hand-spock"></i>
+                        </button>
                     </div>
-                </fieldset>
-            </form>
+                </div>
+            <!-- </form> -->
         </div>
     </div>
     <!-- font awesome script-->
     <script src="https://kit.fontawesome.com/60074bb507.js" crossorigin="anonymous"></script>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
