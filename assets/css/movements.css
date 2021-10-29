@@ -1,0 +1,12 @@
+.selected {
+    background-color: cadetblue;
+    transition: ease-in-out 250ms;
+}
+.visible {
+    visibility: visible;
+    transition: ease-in-out 250ms;
+}
+.disappear {
+    visibility: hidden;
+    transition: ease-in-out 250ms;
+}

@@ -14,10 +14,10 @@ function onPlayerChoice(choice) {
     // If there is other button selected change its class
     let btnSelected = document.getElementsByClassName('selected')[0]
     if (btnSelected) {
-        btnSelected.setAttribute('class', 'icon')
+        btnSelected.setAttribute('class', 'icon visible')
     }
     // give selected class to the button
-    btn.setAttribute('class', 'icon selected')
+    btn.setAttribute('class', 'icon visible selected')
     playerChoice = choice
     displayChoice(choice, 'player')
 }
@@ -125,6 +125,7 @@ function battle() {
     if (player === undefined) {
         message.textContent = 'You must choose an option'
     } else {
+        noDisplayButtons()
         let cmp = cmpChoice();
         message.textContent = '';
         winner = whoWins(player, cmp);
@@ -133,6 +134,9 @@ function battle() {
         if (!playing) {
             document.getElementById('play-button').style.visibility = 'hidden';
         }
+        setTimeout(() => {
+            displayButtons()
+        }, 2000)
     }
 }
 
@@ -231,4 +235,24 @@ function displayChoice(choice, player) {
         <i class="far fa-hand-${choice}"></i>
     `;
     divToShow.innerHTML = icon
+}
+
+/**
+ * change class to not display buttons
+ */
+function noDisplayButtons() {
+    let btns = document.getElementsByTagName('button')
+    for (let btn of btns) {
+        btn.setAttribute('class', 'icon disappear')
+    }
+}
+
+/**
+ * change class to not display buttons
+ */
+function displayButtons() {
+    let btns = document.getElementsByTagName('button')
+    for (let btn of btns) {
+        btn.setAttribute('class', 'icon visible')
+    }
 }
