@@ -2,15 +2,15 @@ let score = {
     player: 3,
     cmp: 3
 };
+let playerChoice;
 let playing = true;
 
 /**
- * @returns player choice
+ * assign value to playerChoice variable
  */
- function playerChoice() {
-    let choices = document.getElementsByTagName('form')[0]
-    let choice = choices.elements['played']
-    return choice.value
+function onPlayerChoice(choice) {
+    playerChoice = choice
+    displayChoice(choice, 'player')
 }
 
 /**
@@ -38,7 +38,7 @@ function cmpChoice() {
         default:
             choice = 'rock'
     }
-    displayCmpChoice(choice)
+    displayChoice(choice, 'cmp')
     return choice
 }
 
@@ -110,7 +110,7 @@ function cmpChoice() {
  * determine who is the winner of the small game
  */
  function battle() {
-    let player = playerChoice();
+    let player = playerChoice;
     let cmp = cmpChoice();
     let message = document.getElementById('game-message');
     let winner;
@@ -122,7 +122,7 @@ function cmpChoice() {
         totalPoints(score, winner);
         finalWinner(score);
         if(!playing) {
-            document.getElementById('playButton').style.visibility = 'hidden';
+            document.getElementById('play-button').style.visibility = 'hidden';
         }
     }
  }
@@ -214,13 +214,12 @@ function displayMessageScore(winner, loserPoints) {
  }
 
 /**
- * display the computer choice
+ * display selected choice
  */
-function displayCmpChoice(choice) {
-    let divToShow = document.getElementById('cmp-choice');
+function displayChoice(choice, player) {
+    let divToShow = document.getElementById(`${player}-choice`);
     let icon = `
         <i class="far fa-hand-${choice}"></i>
     `;
-    console.log(divToShow)
     divToShow.innerHTML = icon
 }
