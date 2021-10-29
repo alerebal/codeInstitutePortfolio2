@@ -45,64 +45,35 @@
             </aside>
         </div>
         <div class="player-area">
-            <button id="play-button" onclick="battle()">Play</button>
-            <div class="icon" id="player-choice"></div>
-            <!-- <form> -->
-                <div id="player-choices">
-                    <div class="row first">
-                        <!-- <div class="icon"> -->
-                            <button class="icon" id="rock" onclick="onPlayerChoice('rock')">
-                                <i class="far fa-hand-rock"></i>
-                            </button>
-                            <!-- <label for="rock">
-                                <input type="radio" name="played" id="rock" value="rock" onchange="onChange('rock')">
-                                <i class="far fa-hand-rock"></i>
-                            </label> -->
-                        <!-- </div> -->
-
-                    </div>
-                    <div class="row second">
-                        <button class="icon" id="paper" onclick="onPlayerChoice('paper')">
-                            <i class="far fa-hand-paper"></i>
-                        </button>
-                        <!-- <label for="paper">
-                            <input type="radio" name="played" id="paper" value="paper" onchange="onChange('paper')">
-                            <div class="icon">
-                                <i class="far fa-hand-paper"></i>
-                            </div>
-                        </label> -->
-                        <!-- <label for="scissors">
-                            <input type="radio" name="played" id="scissors" value="scissors" onchange="onChange('scissors')">
-                            <div class="icon">
-                                <i class="far fa-hand-scissors"></i>
-                            </div>
-                        </label> -->
-                        <button class="icon" id="scissors" onclick="onPlayerChoice('scissors')">
-                            <i class="far fa-hand-scissors"></i>
-                        </button>
-                    </div>
-                    <div class="row third">
-                        <button class="icon" id="lizard" onclick="onPlayerChoice('lizard')">
-                            <i class="far fa-hand-lizard"></i>
-                        </button>
-                        <!-- <label for="lizard">
-                            <input type="radio" name="played" id="lizard" value="lizard" onchange="onChange('lizard')">
-                            <div class="icon">
-                                <i class="far fa-hand-lizard"></i>
-                            </div>
-                        </label>
-                        <label for="spock">
-                            <input type="radio" name="played" id="spock" value="spock" onchange="onChange('spock')">
-                            <div class="icon">
-                                <i class="far fa-hand-spock"></i>
-                            </div>
-                        </label> -->
-                        <button class="icon" id="spock" onclick="onPlayerChoice('spock')">
-                            <i class="far fa-hand-spock"></i>
-                        </button>
-                    </div>
+            <div id="player-display-choice">
+                <div class="icon" id="player-choice"></div>
+            </div>
+            <div id="player-choices">
+                <div class="row first">
+                    <button class="icon" id="rock" onclick="onPlayerChoice('rock')">
+                        <i class="far fa-hand-rock"></i>
+                    </button>
                 </div>
-            <!-- </form> -->
+                <div class="row second">
+                    <button class="icon" id="paper" onclick="onPlayerChoice('paper')">
+                        <i class="far fa-hand-paper"></i>
+                    </button>
+
+                    <button id="play-button" onclick="battle()">Play</button>
+
+                    <button class="icon" id="scissors" onclick="onPlayerChoice('scissors')">
+                        <i class="far fa-hand-scissors"></i>
+                    </button>
+                </div>
+                <div class="row third">
+                    <button class="icon" id="lizard" onclick="onPlayerChoice('lizard')">
+                        <i class="far fa-hand-lizard"></i>
+                    </button>
+                    <button class="icon" id="spock" onclick="onPlayerChoice('spock')">
+                        <i class="far fa-hand-spock"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <!-- font awesome script-->
