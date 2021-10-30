@@ -129,22 +129,24 @@ function battle() {
     } else {
         noDisplayButtons()
         setTimeout(() => {
-            showPlayer.setAttribute('class', 'visible moveUp')
-            showCmp.setAttribute('class', 'visible moveDown')
-        }, 500)
+            showPlayer.setAttribute('class', 'fight visible moveUp')
+            showCmp.setAttribute('class', 'fight visible moveDown')
+        })
         let cmp = cmpChoice();
         message.textContent = '';
-        winner = whoWins(player, cmp);
-        totalPoints(score, winner);
-        finalWinner(score);
-        if (!playing) {
-            document.getElementById('play-button').style.visibility = 'hidden';
-        }
+        setTimeout(() => {
+            winner = whoWins(player, cmp);
+            totalPoints(score, winner);
+            finalWinner(score);
+            if (!playing) {
+                document.getElementById('play-button').style.visibility = 'hidden';
+            }
+        },1500)
         setTimeout(() => {
             displayButtons()
-            showPlayer.setAttribute('class', 'disappear')
-            showCmp.setAttribute('class', 'disappear')
-        }, 4000)
+            showPlayer.setAttribute('class', 'fight disappear')
+            showCmp.setAttribute('class', 'fight disappear')
+        }, 2000)
     }
 }
 
