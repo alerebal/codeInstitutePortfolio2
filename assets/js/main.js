@@ -5,6 +5,38 @@ let score = {
 let playerChoice;
 let playing = true;
 
+document.addEventListener('DOMContentLoaded', () => {
+
+    startGame()
+
+})
+
+/* 
+I could not use a regular setTimeout here, I had to use a IFEE https://codehandbook.org/understanding-settimeout-inside-for-loop-in-javascript/
+*/
+let label = document.getElementById('game-message')
+let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', '']
+/**
+ * starts the game
+ */
+function startGame() {
+    if(!playing) {
+        return false
+    }
+    for (let i = 0; i < labels.length; i++) {
+        ((i) => {
+            setTimeout(() => {
+                label.innerText = labels[i]
+                console.log(labels[i])
+                if (labels[i] === '') {
+                    battle()
+                }
+            }, 700 * (i + 1))
+        })(i)
+    }
+
+}
+
 
 /**
  * assign value to playerChoice variable
@@ -126,6 +158,11 @@ function battle() {
     let showCmp = document.getElementById('cmp-choice');
     if (player === undefined) {
         message.textContent = 'You must choose an option'
+        if (playing) {
+            setTimeout(() => {
+                startGame()
+            }, 2000)
+        }
     } else {
         noDisplayButtons()
         setTimeout(() => {
@@ -138,15 +175,20 @@ function battle() {
             winner = whoWins(player, cmp);
             totalPoints(score, winner);
             finalWinner(score);
-            if (!playing) {
-                document.getElementById('play-button').style.visibility = 'hidden';
-            }
-        },1500)
+            // if (!playing) {
+            //     document.getElementById('play-button').style.visibility = 'hidden';
+            // }
+        }, 1500)
         setTimeout(() => {
             displayButtons()
             showPlayer.setAttribute('class', 'fight disappear')
             showCmp.setAttribute('class', 'fight disappear')
-        }, 2000)
+        }, 3000)
+        if (playing) {
+            setTimeout(() => {
+                startGame()
+            }, 2000)
+        }
     }
 }
 
