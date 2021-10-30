@@ -7,27 +7,47 @@ let playing = true;
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    startGame()
+    // startGame()
+    welcomeMessage()
 
 })
 
+/**
+ * display message to player can start the game
+ */
+function welcomeMessage() {
+    let msg = `Welcome you!!`
+    let modal = `
+        <p class="modal">${msg} <button onclick="startGame()">Start</button></p>
+    `;
+    let div = document.createElement('div')
+    div.setAttribute('id', 'modal')
+    div.innerHTML = modal
+    let body = document.querySelector('body')
+    body.appendChild(div)
+}
+
+/**
+ * starts the game
+ */
+function startGame() {
 /* 
 I could not use a regular setTimeout here, I had to use a IFEE https://codehandbook.org/understanding-settimeout-inside-for-loop-in-javascript/
 */
 let label = document.getElementById('game-message')
 let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', '']
-/**
- * starts the game
- */
-function startGame() {
+let modal = document.getElementById('modal')
+// playerChoice = undefined;
     if(!playing) {
         return false
+    }
+    if(modal) {
+        modal.remove()
     }
     for (let i = 0; i < labels.length; i++) {
         ((i) => {
             setTimeout(() => {
                 label.innerText = labels[i]
-                console.log(labels[i])
                 if (labels[i] === '') {
                     battle()
                 }
@@ -178,17 +198,19 @@ function battle() {
             // if (!playing) {
             //     document.getElementById('play-button').style.visibility = 'hidden';
             // }
-        }, 1500)
+        }, 2000)
+        setTimeout(() => {
+            if (playing) {
+                setTimeout(() => {
+                    startGame()
+                }, 2000)
+            }
+        }, 2000)
         setTimeout(() => {
             displayButtons()
             showPlayer.setAttribute('class', 'fight disappear')
             showCmp.setAttribute('class', 'fight disappear')
         }, 3000)
-        if (playing) {
-            setTimeout(() => {
-                startGame()
-            }, 2000)
-        }
     }
 }
 
