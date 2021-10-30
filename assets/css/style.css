@@ -26,27 +26,24 @@ fieldset {
 }
 
 /* Cmp area */
-.cmp-area {
+
+#cmp-display-choice {
     position: relative;
     height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: green 1px solid;
-}
-
-#cmp-display-choice {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     bottom: 0;
 }
 
-/* #cmp-choice {
+#cmp-choice {
     position: absolute;
     bottom: 0;
-} */
+}
+
+.fight {
+    font-size: 1.4em;
+}
 
 /* Play area */
 .play-area {
