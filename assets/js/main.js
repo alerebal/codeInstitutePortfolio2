@@ -2,6 +2,8 @@ let score = {
     player: 3,
     cmp: 3
 };
+let playerName;
+
 let playerChoice;
 let playing = true;
 
@@ -16,32 +18,58 @@ document.addEventListener('DOMContentLoaded', () => {
  * display message to player can start the game
  */
 function welcomeMessage() {
-    let msg = `Welcome you!!`
-    let modal = `
-        <p class="modal">${msg} <button onclick="startGame()">Start</button></p>
-    `;
     let div = document.createElement('div')
+    let body = document.getElementsByTagName('body')[0]
+    let modal = `
+    <div class="modal-message">
+        <p>
+            Welcome to play Rock, Paper, Scissors, Lizard, Spock Game
+        </p>
+        <p>
+            Put your 
+            <input type="text" class="modal-input" maxlength='15' name="player-name" id="player-name" placeholder="name here">
+            and start <span onclick="startGameMessage()">playing</span>.
+        </p>
+    </div>
+    `;
     div.setAttribute('id', 'modal')
     div.innerHTML = modal
-    let body = document.querySelector('body')
     body.appendChild(div)
+}
+
+/**
+ * just testing
+ */
+function startGameMessage() {
+    let playerInputName = document.getElementById('player-name').value
+    if (playerInputName === '') {
+        let conf = confirm(`If you don't put your name, we'll call you just player.`)
+        if (conf) {
+            playerName = 'Player'
+            startGame()
+        }
+    } else {
+        playerName = playerInputName
+        startGame()
+    }
+    console.log(playerName)
 }
 
 /**
  * starts the game
  */
 function startGame() {
-/* 
-I could not use a regular setTimeout here, I had to use a IFEE https://codehandbook.org/understanding-settimeout-inside-for-loop-in-javascript/
-*/
-let label = document.getElementById('game-message')
-let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', '']
-let modal = document.getElementById('modal')
-// playerChoice = undefined;
-    if(!playing) {
+    /* 
+    I could not use a regular setTimeout here, I had to use a IFEE https://codehandbook.org/understanding-settimeout-inside-for-loop-in-javascript/
+    */
+    let label = document.getElementById('game-message')
+    let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', '']
+    let modal = document.getElementById('modal')
+    // playerChoice = undefined;
+    if (!playing) {
         return false
     }
-    if(modal) {
+    if (modal) {
         modal.remove()
     }
     for (let i = 0; i < labels.length; i++) {
