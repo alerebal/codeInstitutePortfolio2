@@ -45,8 +45,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 2em;
+    text-align: justify;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: black 3px solid;
+    background-color: cadetblue;
+    border-radius: 15px;
+    box-shadow: 0 0 2px 1px rgb(48, 47, 47);
+}
+
+.modal-input {
+    width: 20%;
+    border: none;
+    padding: .2em;
+}
+
+.modal-message span {
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
 }

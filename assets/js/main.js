@@ -1,25 +1,25 @@
+let playerName;
+let cmpName;
+let body = document.getElementsByTagName('body')[0]
+let playerChoice;
+let playing = true;
 let score = {
     player: 3,
     cmp: 3
 };
-let playerName;
-
-let playerChoice;
-let playing = true;
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // startGame()
     welcomeMessage()
-
+    // chooseRivalModal()
 })
 
 /**
- * display message to player can start the game
+ * display message to player can put their name and start the game
  */
 function welcomeMessage() {
     let div = document.createElement('div')
-    let body = document.getElementsByTagName('body')[0]
     let modal = `
     <div class="modal-message">
         <p>
@@ -32,13 +32,13 @@ function welcomeMessage() {
         </p>
     </div>
     `;
-    div.setAttribute('id', 'modal')
+    div.setAttribute('class', 'modal welcome')
     div.innerHTML = modal
     body.appendChild(div)
 }
 
 /**
- * just testing
+ * Set the player name.
  */
 function startGameMessage() {
     let playerInputName = document.getElementById('player-name').value
@@ -46,13 +46,70 @@ function startGameMessage() {
         let conf = confirm(`If you don't put your name, we'll call you just player.`)
         if (conf) {
             playerName = 'Player'
-            startGame()
+            chooseRivalModal()
         }
     } else {
         playerName = playerInputName
-        startGame()
+        chooseRivalModal()
     }
     console.log(playerName)
+}
+
+/**
+ * displays modal to choose rival
+ */
+function chooseRivalModal() {
+    let div = document.createElement('div');
+    let modal = `
+        
+        <form>
+        <h2 class="text-center">Choose a rival</h2>
+            <div class="rivals">
+                <div class="rival">
+                    <label for="bob">
+                        <div class="icon">
+                            <img src="assets/images/icons/sponge_bob.png" alt="Bob">
+                        </div>
+                        <input type="radio" name="rival" id="bob" value="bob" checked>
+                        <span>Bob</span>
+                    </label>
+                </div>
+                <div class="rival">
+                    <label for="patrick">
+                        <div class="icon">
+                            <img src="assets/images/icons/patrick_star.png" alt="Patrick">
+                        </div>
+                        <input type="radio" name="rival" id="patrick" value="patrick">
+                        Patrick
+                    </label>
+                </div>
+                <div class="rival">
+                    <label for="squidward">
+                        <div class="icon">
+                            <img id="squid-img" src="assets/images/icons/squidward.png" alt="Squidward">
+                        </div>
+                        <input type="radio" name="rival" id="squidward" value="squidward">
+                        Squidward
+                    </label>
+                </div>
+            </div>
+            <div class="btn">
+                <input type="button" value="Choose" onclick="startGame()">
+            </div>
+        </form>
+    `;
+    div.setAttribute('class', 'modal rival')
+    div.innerHTML = modal
+    body.appendChild(div)
+}
+
+/**
+ * allow the player to choose a rival. set cmp player name
+ */
+function chooseRival() {
+    let form = document.getElementsByTagName('form')[0].elements['rival'];
+    cmpName = form.value
+    console.log(cmpName)
 }
 
 /**
@@ -64,13 +121,17 @@ function startGame() {
     */
     let label = document.getElementById('game-message')
     let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', '']
-    let modal = document.getElementById('modal')
+    let modalWelcome = document.getElementsByClassName('modal welcome')[0]
+    let modalRival = document.getElementsByClassName('modal rival')[0]
     // playerChoice = undefined;
     if (!playing) {
         return false
     }
-    if (modal) {
-        modal.remove()
+    if (modalWelcome) {
+        modalWelcome.remove()
+    }
+    if (modalRival) {
+        modalRival.remove()
     }
     for (let i = 0; i < labels.length; i++) {
         ((i) => {
