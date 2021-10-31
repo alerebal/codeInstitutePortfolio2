@@ -9,10 +9,7 @@ let score = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // startGame()
     welcomeMessage()
-    // chooseRivalModal()
 })
 
 /**
@@ -42,6 +39,7 @@ function welcomeMessage() {
  */
 function startGameMessage() {
     let playerInputName = document.getElementById('player-name').value
+    console.log(playerInputName)
     if (playerInputName === '') {
         let conf = confirm(`If you don't put your name, we'll call you just player.`)
         if (conf) {
@@ -52,7 +50,6 @@ function startGameMessage() {
         playerName = playerInputName
         chooseRivalModal()
     }
-    console.log(playerName)
 }
 
 /**
@@ -61,7 +58,6 @@ function startGameMessage() {
 function chooseRivalModal() {
     let div = document.createElement('div');
     let modal = `
-        
         <form>
         <h2 class="text-center">Choose a rival</h2>
             <div class="rivals">
@@ -70,7 +66,7 @@ function chooseRivalModal() {
                         <div class="icon">
                             <img src="assets/images/icons/sponge_bob.png" alt="Bob">
                         </div>
-                        <input type="radio" name="rival" id="bob" value="bob" checked>
+                        <input type="radio" name="rival" id="bob" value="Bob" checked>
                         <span>Bob</span>
                     </label>
                 </div>
@@ -79,7 +75,7 @@ function chooseRivalModal() {
                         <div class="icon">
                             <img src="assets/images/icons/patrick_star.png" alt="Patrick">
                         </div>
-                        <input type="radio" name="rival" id="patrick" value="patrick">
+                        <input type="radio" name="rival" id="patrick" value="Patrick">
                         Patrick
                     </label>
                 </div>
@@ -88,13 +84,13 @@ function chooseRivalModal() {
                         <div class="icon">
                             <img id="squid-img" src="assets/images/icons/squidward.png" alt="Squidward">
                         </div>
-                        <input type="radio" name="rival" id="squidward" value="squidward">
+                        <input type="radio" name="rival" id="squidward" value="Squidward">
                         Squidward
                     </label>
                 </div>
             </div>
             <div class="btn">
-                <input type="button" value="Choose" onclick="startGame()">
+                <input type="button" value="Choose" onclick="chooseRival()">
             </div>
         </form>
     `;
@@ -108,17 +104,18 @@ function chooseRivalModal() {
  */
 function chooseRival() {
     let form = document.getElementsByTagName('form')[0].elements['rival'];
+    let playerNameDisplay = document.getElementById('player-chose-name');
+    let rivalNameDisplay = document.getElementById('cmp-chose-name');
     cmpName = form.value
-    console.log(cmpName)
+    playerNameDisplay.innerText = playerName
+    rivalNameDisplay.innerText = cmpName
+    startGame()
 }
 
 /**
  * starts the game
  */
 function startGame() {
-    /* 
-    I could not use a regular setTimeout here, I had to use a IFEE https://codehandbook.org/understanding-settimeout-inside-for-loop-in-javascript/
-    */
     let label = document.getElementById('game-message')
     let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', '']
     let modalWelcome = document.getElementsByClassName('modal welcome')[0]
@@ -133,6 +130,9 @@ function startGame() {
     if (modalRival) {
         modalRival.remove()
     }
+    /* 
+    I could not use a regular setTimeout here, I had to use a IFEE https://codehandbook.org/understanding-settimeout-inside-for-loop-in-javascript/
+    */
     for (let i = 0; i < labels.length; i++) {
         ((i) => {
             setTimeout(() => {
