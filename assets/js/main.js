@@ -1,6 +1,7 @@
 let playerName;
-let cmpName;
+let cmpName = ''
 let body = document.getElementsByTagName('body')[0]
+let rivalImgDisplay = document.getElementById('cmp-choice');
 let playerChoice;
 let playing = true;
 let score = {
@@ -64,18 +65,18 @@ function chooseRivalModal() {
                 <div class="rival">
                     <label for="bob">
                         <div class="icon">
-                            <img src="assets/images/icons/sponge_bob.png" alt="Bob">
+                            <img src="assets/images/icons/bob.png" alt="Bob">
                         </div>
-                        <input type="radio" name="rival" id="bob" value="Bob" checked>
+                        <input type="radio" name="rival" id="bob" value="bob" checked>
                         <span>Bob</span>
                     </label>
                 </div>
                 <div class="rival">
                     <label for="patrick">
                         <div class="icon">
-                            <img src="assets/images/icons/patrick_star.png" alt="Patrick">
+                            <img src="assets/images/icons/patrick.png" alt="Patrick">
                         </div>
-                        <input type="radio" name="rival" id="patrick" value="Patrick">
+                        <input type="radio" name="rival" id="patrick" value="patrick">
                         Patrick
                     </label>
                 </div>
@@ -84,7 +85,7 @@ function chooseRivalModal() {
                         <div class="icon">
                             <img id="squid-img" src="assets/images/icons/squidward.png" alt="Squidward">
                         </div>
-                        <input type="radio" name="rival" id="squidward" value="Squidward">
+                        <input type="radio" name="rival" id="squidward" value="squidward">
                         Squidward
                     </label>
                 </div>
@@ -106,10 +107,26 @@ function chooseRival() {
     let form = document.getElementsByTagName('form')[0].elements['rival'];
     let playerNameDisplay = document.getElementById('player-chose-name');
     let rivalNameDisplay = document.getElementById('cmp-chose-name');
+    let firstLetter = form.value.substr(0, 1)
+    let firstCapital = firstLetter.toUpperCase()
+    let cmpNameCapitalize = form.value.replace(firstLetter, firstCapital)
     cmpName = form.value
     playerNameDisplay.innerText = playerName
-    rivalNameDisplay.innerText = cmpName
+    rivalNameDisplay.innerText = cmpNameCapitalize
+    setCmpImage(cmpName)
     startGame()
+}
+
+/**
+ * set a div with the cmp image and display it
+ */
+function setCmpImage(cmpPlayer) {
+    let innerHTML = `
+    <div class="icon" >
+        <img id="cmp-choice-img" src="assets/images/icons/${cmpPlayer}.png" alt="cmp choice">
+    </div>
+    `;
+    rivalImgDisplay.innerHTML = innerHTML
 }
 
 /**
@@ -120,6 +137,7 @@ function startGame() {
     let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', '']
     let modalWelcome = document.getElementsByClassName('modal welcome')[0]
     let modalRival = document.getElementsByClassName('modal rival')[0]
+
     // playerChoice = undefined;
     if (!playing) {
         return false
@@ -265,6 +283,13 @@ function battle() {
     let winner;
     let showPlayer = document.getElementById('player-choice');
     let showCmp = document.getElementById('cmp-choice');
+
+    // let innerHTML = `
+    //     <div class="icon" >
+    //         <img id="cmp-choice-img" src="assets/images/icons/squidward.png" alt="cmp choice">
+    //     </div>
+    // `;
+
     if (player === undefined) {
         message.textContent = 'You must choose an option'
         if (playing) {
@@ -298,7 +323,9 @@ function battle() {
         setTimeout(() => {
             displayButtons()
             showPlayer.setAttribute('class', 'fight disappear')
-            showCmp.setAttribute('class', 'fight disappear')
+            // showCmp.setAttribute('class', 'fight')
+            // rivalImgDisplay.innerHTML = innerHTML
+            setCmpImage(cmpName.toLowerCase())
         }, 3000)
     }
 }
