@@ -72,7 +72,9 @@ function chooseRivalModal() {
                     <div class="icon">
                         <img src="assets/images/icons/${rival}.png" alt="${rival}">
                     </div>
-                    <input type="radio" name="rival" id="${rival}" value="${rival}">
+                    <input type="radio" name="rival" id="${rival}" value="${rival}" 
+                    ${rival === 'bob' ? 'checked': ''}
+                    >
                     <span>${capitalizeAWord(rival)}</span>
                 </label>
             </div>
@@ -96,7 +98,9 @@ function chooseRivalModal() {
  */
 function chooseRival() {
     let form = document.getElementsByTagName('form')[0].elements['rival'];
+    // put the name of the player on the screem
     let playerNameDisplay = document.getElementById('player-chose-name');
+    // put the name of the cmp player on the screen
     let rivalNameDisplay = document.getElementById('cmp-chose-name');
     cmpName = form.value
     playerNameDisplay.innerText = playerName
