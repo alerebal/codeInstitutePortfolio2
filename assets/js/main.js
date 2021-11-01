@@ -57,44 +57,35 @@ function startGameMessage() {
  * displays modal to choose rival
  */
 function chooseRivalModal() {
+    let rivals = ['bob', 'patrick', 'squidward']
     let div = document.createElement('div');
-    let modal = `
+    let innerHTML = '';
+    let modal = `    
         <form>
-        <h2 class="text-center">Choose a rival</h2>
+            <h2 class="text-center">Choose a rival</h2>
             <div class="rivals">
-                <div class="rival">
-                    <label for="bob">
-                        <div class="icon">
-                            <img src="assets/images/icons/bob.png" alt="Bob">
-                        </div>
-                        <input type="radio" name="rival" id="bob" value="bob" checked>
-                        <span>Bob</span>
-                    </label>
-                </div>
-                <div class="rival">
-                    <label for="patrick">
-                        <div class="icon">
-                            <img src="assets/images/icons/patrick.png" alt="Patrick">
-                        </div>
-                        <input type="radio" name="rival" id="patrick" value="patrick">
-                        Patrick
-                    </label>
-                </div>
-                <div class="rival">
-                    <label for="squidward">
-                        <div class="icon">
-                            <img id="squid-img" src="assets/images/icons/squidward.png" alt="Squidward">
-                        </div>
-                        <input type="radio" name="rival" id="squidward" value="squidward">
-                        Squidward
-                    </label>
-                </div>
+        `;
+    for (let rival of rivals) {
+        innerHTML += `
+            <div class="rival">
+                <label for="${rival}">
+                    <div class="icon">
+                        <img src="assets/images/icons/${rival}.png" alt="${rival}">
+                    </div>
+                    <input type="radio" name="rival" id="${rival}" value="${rival}">
+                    <span>${capitalizeAWord(rival)}</span>
+                </label>
             </div>
-            <div class="btn">
-                <input type="button" value="Choose" onclick="chooseRival()">
-            </div>
-        </form>
+            `;
+    }
+    innerHTML += `
+        </div>
+        <div class="btn">
+            <input type="button" value="Choose" onclick="chooseRival()">
+        </div>
+    </form>
     `;
+    modal += innerHTML;
     div.setAttribute('class', 'modal rival')
     div.innerHTML = modal
     body.appendChild(div)
@@ -107,12 +98,9 @@ function chooseRival() {
     let form = document.getElementsByTagName('form')[0].elements['rival'];
     let playerNameDisplay = document.getElementById('player-chose-name');
     let rivalNameDisplay = document.getElementById('cmp-chose-name');
-    let firstLetter = form.value.substr(0, 1)
-    let firstCapital = firstLetter.toUpperCase()
-    let cmpNameCapitalize = form.value.replace(firstLetter, firstCapital)
     cmpName = form.value
     playerNameDisplay.innerText = playerName
-    rivalNameDisplay.innerText = cmpNameCapitalize
+    rivalNameDisplay.innerText = capitalizeAWord(cmpName)
     setCmpImage(cmpName)
     startGame()
 }
@@ -284,12 +272,6 @@ function battle() {
     let showPlayer = document.getElementById('player-choice');
     let showCmp = document.getElementById('cmp-choice');
 
-    // let innerHTML = `
-    //     <div class="icon" >
-    //         <img id="cmp-choice-img" src="assets/images/icons/squidward.png" alt="cmp choice">
-    //     </div>
-    // `;
-
     if (player === undefined) {
         message.textContent = 'You must choose an option'
         if (playing) {
@@ -309,9 +291,6 @@ function battle() {
             winner = whoWins(player, cmp);
             totalPoints(score, winner);
             finalWinner(score);
-            // if (!playing) {
-            //     document.getElementById('play-button').style.visibility = 'hidden';
-            // }
         }, 2000)
         setTimeout(() => {
             if (playing) {
@@ -323,8 +302,6 @@ function battle() {
         setTimeout(() => {
             displayButtons()
             showPlayer.setAttribute('class', 'fight disappear')
-            // showCmp.setAttribute('class', 'fight')
-            // rivalImgDisplay.innerHTML = innerHTML
             setCmpImage(cmpName.toLowerCase())
         }, 3000)
     }
@@ -445,4 +422,15 @@ function displayButtons() {
     for (let btn of btns) {
         btn.setAttribute('class', 'icon visible')
     }
+}
+
+/**
+ * @returns a capitalized word
+ */
+function capitalizeAWord(word) {
+    let firstLetter = word.substr(0, 1)
+    let firstCapital = firstLetter.toUpperCase()
+    let wordCapitalized = word.replace(firstLetter, firstCapital)
+
+    return wordCapitalized
 }
