@@ -3,7 +3,7 @@ let cmpName = ''
 let body = document.getElementsByTagName('body')[0]
 let rivalImgDisplay = document.getElementById('cmp-choice');
 let playerChoice;
-let playing = true;
+let playing = true; // if true, the game has still been playing
 let score = {
     player: 3,
     cmp: 3
@@ -38,6 +38,7 @@ function welcomeMessage() {
 /**
  * Set the player name.
  */
+// when the playerName is set, the chooseRivalModel function is triggered
 function startGameMessage() {
     let playerInputName = document.getElementById('player-name').value;
     if (playerInputName === '') {
@@ -72,7 +73,7 @@ function chooseRivalModal() {
                         <img src="assets/images/icons/${rival}.png" alt="${rival}">
                     </div>
                     <input type="radio" name="rival" id="${rival}" value="${rival}" 
-                    ${rival === 'bob' ? 'checked': ''}
+                    ${rival === 'bob' ? 'checked' : ''}
                     >
                     <span>${capitalizeAWord(rival)}</span>
                 </label>
@@ -95,6 +96,7 @@ function chooseRivalModal() {
 /**
  * allow the player to choose a rival. set cmp player name
  */
+// once the rival has been selected, both names of the players are displayed in the screen, the image of the cmp player is shown and the game begin
 function chooseRival() {
     let form = document.getElementsByTagName('form')[0].elements['rival'];
     // put the name of the player on the screem
@@ -123,16 +125,18 @@ function setCmpImage(cmpPlayer) {
 /**
  * starts the game
  */
+// count down for each game, battle function is triggered after it finished
 function startGame() {
     let label = document.getElementById('game-message');
     let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', ''];
     let modalWelcome = document.getElementsByClassName('modal welcome')[0];
     let modalRival = document.getElementsByClassName('modal rival')[0];
+    playerChoice = undefined;
 
-    // playerChoice = undefined;
     if (!playing) {
         return false;
     }
+    // if there is some modal displayed, hide it
     if (modalWelcome) {
         modalWelcome.remove();
     }
@@ -157,7 +161,7 @@ function startGame() {
 
 
 /**
- * assign value to playerChoice variable
+ * assign value to playerChoice variable and pass it to the displayChoice function param
  */
 function onPlayerChoice(choice) {
     let btn = document.getElementById(choice);
@@ -175,6 +179,7 @@ function onPlayerChoice(choice) {
 /**
  * @returns cmp choice
  */
+// get a random number between 1 and 5 and give an option to every one of them. Then the displayChoice function is triggered and the choice is returned
 function cmpChoice() {
     let choice;
     let random = Math.floor(Math.random() * 5) + 1;
@@ -275,6 +280,7 @@ function battle() {
     let showPlayer = document.getElementById('player-choice');
     let showCmp = document.getElementById('cmp-choice');
 
+    // if the player didn't get an option, show the message to ask him to do it
     if (player === undefined) {
         message.textContent = 'You must choose an option';
         if (playing) {
@@ -283,18 +289,22 @@ function battle() {
             }, 2000);
         }
     } else {
+        // hide option buttons and show both options on screen
         noDisplayButtons()
         setTimeout(() => {
             showPlayer.setAttribute('class', 'fight visible moveUp');
             showCmp.setAttribute('class', 'fight visible moveDown');
         })
+        // get the cmp choice
         let cmp = cmpChoice();
         message.textContent = '';
+        // get the winner of the battle, show messages and points on the screen and find out if there is a final winner
         setTimeout(() => {
             winner = whoWins(player, cmp);
             totalPoints(score, winner);
             finalWinner(score);
         }, 2000);
+        // if there is not a final winner, the game continues
         setTimeout(() => {
             if (playing) {
                 setTimeout(() => {
@@ -302,6 +312,7 @@ function battle() {
                 }, 2000);
             };
         }, 2000);
+        // display the option buttons and the cmp image again and hide the player option
         setTimeout(() => {
             displayButtons();
             showPlayer.setAttribute('class', 'fight disappear');
@@ -327,17 +338,18 @@ function totalPoints(score, winner) {
 }
 
 /**
- * display the score on the side
+ * display the score on the sides
  */
+// remove one point if there is a winner of a battle and trigger the displayMessageScore function
 function displayScore(winner) {
     let cmpScore = document.getElementById('score-cmp');
     let playerScore = document.getElementById('score-player');
     if (winner === 'player') {
         cmpScore.children[0].remove();
-        displayMessageScore(winner, cmpScore.children.length);
+        displayMessageScore(winner, score.cmp);
     } else if (winner === 'cmp') {
         playerScore.children[0].remove();
-        displayMessageScore(winner, playerScore.children.length);
+        displayMessageScore(winner, score.player);
     } else {
         return null;
     }
@@ -384,6 +396,7 @@ function displayMessageScore(winner, loserPoints) {
 /**
  * @returns who obtains the final victory
  */
+// if some of the players lose all the points, the other player is the winner
 function finalWinner(score) {
     if (score.player === 0) {
         playing = false;
@@ -408,7 +421,7 @@ function displayChoice(choice, player) {
 }
 
 /**
- * change class to not display buttons
+ * change class to display buttons
  */
 function noDisplayButtons() {
     let btns = document.getElementsByTagName('button');
