@@ -312,11 +312,18 @@ function battle() {
                 }, 2000);
             };
         }, 2000);
-        // display the option buttons and the cmp image again and hide the player option
+        // display the option buttons and the cmp image again and hide the player option. If the game is over, show an alert to start it again
         setTimeout(() => {
             displayButtons();
             showPlayer.setAttribute('class', 'fight disappear');
             setCmpImage(cmpName.toLowerCase());
+            setTimeout(() => {
+                if (!playing) {
+                    if (confirm('play again?')) {
+                        location.reload();
+                    }
+                }
+            }, 2000)
         }, 3000);
     }
 }
