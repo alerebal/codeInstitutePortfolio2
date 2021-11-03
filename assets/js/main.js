@@ -10,14 +10,14 @@ let score = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    welcomeMessage()
+    welcomeMessage();
 })
 
 /**
  * display message to player can put their name and start the game
  */
 function welcomeMessage() {
-    let div = document.createElement('div')
+    let div = document.createElement('div');
     let modal = `
     <div class="modal-message">
         <p>
@@ -30,26 +30,25 @@ function welcomeMessage() {
         </p>
     </div>
     `;
-    div.setAttribute('class', 'modal welcome')
-    div.innerHTML = modal
-    body.appendChild(div)
+    div.setAttribute('class', 'modal welcome');
+    div.innerHTML = modal;
+    body.appendChild(div);
 }
 
 /**
  * Set the player name.
  */
 function startGameMessage() {
-    let playerInputName = document.getElementById('player-name').value
-    console.log(playerInputName)
+    let playerInputName = document.getElementById('player-name').value;
     if (playerInputName === '') {
-        let conf = confirm(`If you don't put your name, we'll call you just player.`)
+        let conf = confirm(`If you don't put your name, we'll call you just player.`);
         if (conf) {
-            playerName = 'Player'
-            chooseRivalModal()
+            playerName = 'Player';
+            chooseRivalModal();
         }
     } else {
-        playerName = playerInputName
-        chooseRivalModal()
+        playerName = playerInputName;
+        chooseRivalModal();
     }
 }
 
@@ -57,7 +56,7 @@ function startGameMessage() {
  * displays modal to choose rival
  */
 function chooseRivalModal() {
-    let rivals = ['bob', 'patrick', 'squidward']
+    let rivals = ['bob', 'patrick', 'squidward'];
     let div = document.createElement('div');
     let innerHTML = '';
     let modal = `    
@@ -88,9 +87,9 @@ function chooseRivalModal() {
     </form>
     `;
     modal += innerHTML;
-    div.setAttribute('class', 'modal rival')
-    div.innerHTML = modal
-    body.appendChild(div)
+    div.setAttribute('class', 'modal rival');
+    div.innerHTML = modal;
+    body.appendChild(div);
 }
 
 /**
@@ -102,11 +101,11 @@ function chooseRival() {
     let playerNameDisplay = document.getElementById('player-chose-name');
     // put the name of the cmp player on the screen
     let rivalNameDisplay = document.getElementById('cmp-chose-name');
-    cmpName = form.value
-    playerNameDisplay.innerText = playerName
-    rivalNameDisplay.innerText = capitalizeAWord(cmpName)
-    setCmpImage(cmpName)
-    startGame()
+    cmpName = form.value;
+    playerNameDisplay.innerText = playerName;
+    rivalNameDisplay.innerText = capitalizeAWord(cmpName);
+    setCmpImage(cmpName);
+    startGame();
 }
 
 /**
@@ -118,27 +117,27 @@ function setCmpImage(cmpPlayer) {
         <img id="cmp-choice-img" src="assets/images/icons/${cmpPlayer}.png" alt="cmp choice">
     </div>
     `;
-    rivalImgDisplay.innerHTML = innerHTML
+    rivalImgDisplay.innerHTML = innerHTML;
 }
 
 /**
  * starts the game
  */
 function startGame() {
-    let label = document.getElementById('game-message')
-    let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', '']
-    let modalWelcome = document.getElementsByClassName('modal welcome')[0]
-    let modalRival = document.getElementsByClassName('modal rival')[0]
+    let label = document.getElementById('game-message');
+    let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', ''];
+    let modalWelcome = document.getElementsByClassName('modal welcome')[0];
+    let modalRival = document.getElementsByClassName('modal rival')[0];
 
     // playerChoice = undefined;
     if (!playing) {
-        return false
+        return false;
     }
     if (modalWelcome) {
-        modalWelcome.remove()
+        modalWelcome.remove();
     }
     if (modalRival) {
-        modalRival.remove()
+        modalRival.remove();
     }
     /* 
     I could not use a regular setTimeout here, I had to use a IFEE https://codehandbook.org/understanding-settimeout-inside-for-loop-in-javascript/
@@ -146,11 +145,11 @@ function startGame() {
     for (let i = 0; i < labels.length; i++) {
         ((i) => {
             setTimeout(() => {
-                label.innerText = labels[i]
+                label.innerText = labels[i];
                 if (labels[i] === '') {
-                    battle()
+                    battle();
                 }
-            }, 700 * (i + 1))
+            }, 700 * (i + 1));
         })(i)
     }
 
@@ -161,16 +160,16 @@ function startGame() {
  * assign value to playerChoice variable
  */
 function onPlayerChoice(choice) {
-    let btn = document.getElementById(choice)
+    let btn = document.getElementById(choice);
     // If there is other button selected change its class
-    let btnSelected = document.getElementsByClassName('selected')[0]
+    let btnSelected = document.getElementsByClassName('selected')[0];
     if (btnSelected) {
-        btnSelected.setAttribute('class', 'icon visible')
+        btnSelected.setAttribute('class', 'icon visible');
     }
     // give selected class to the button
-    btn.setAttribute('class', 'icon visible selected')
-    playerChoice = choice
-    displayChoice(choice, 'player')
+    btn.setAttribute('class', 'icon visible selected');
+    playerChoice = choice;
+    displayChoice(choice, 'player');
 }
 
 /**
@@ -182,24 +181,24 @@ function cmpChoice() {
     switch (random) {
         case 1:
             choice = 'rock';
-            break
+            break;
         case 2:
-            choice = 'paper'
-            break
+            choice = 'paper';
+            break;
         case 3:
-            choice = 'scissors'
-            break
+            choice = 'scissors';
+            break;
         case 4:
-            choice = 'lizard'
-            break
+            choice = 'lizard';
+            break;
         case 5:
-            choice = 'spock'
-            break
+            choice = 'spock';
+            break;
         default:
-            choice = 'rock'
+            choice = 'rock';
     }
-    displayChoice(choice, 'cmp')
-    return choice
+    displayChoice(choice, 'cmp');
+    return choice;
 }
 
 /**
@@ -207,61 +206,61 @@ function cmpChoice() {
  */
 function whoWins(player, cmp) {
     if (player === cmp) {
-        return null
+        return null;
     } else if (player === 'rock') {
         switch (cmp) {
             case 'paper':
-                return 'cmp'
+                return 'cmp';
             case 'scissors':
-                return 'player'
+                return 'player';
             case 'lizard':
-                return 'player'
+                return 'player';
             case 'spock':
-                return 'cmp'
+                return 'cmp';
         }
     } else if (player === 'paper') {
         switch (cmp) {
             case 'rock':
-                return 'player'
+                return 'player';
             case 'scissors':
-                return 'cmp'
+                return 'cmp';
             case 'lizard':
-                return 'cmp'
+                return 'cmp';
             case 'spock':
-                return 'player'
+                return 'player';
         }
     } else if (player === 'scissors') {
         switch (cmp) {
             case 'paper':
-                return 'player'
+                return 'player';
             case 'rock':
-                return 'cmp'
+                return 'cmp';
             case 'lizard':
-                return 'player'
+                return 'player';
             case 'spock':
-                return 'cmp'
+                return 'cmp';
         }
     } else if (player === 'lizard') {
         switch (cmp) {
             case 'paper':
-                return 'player'
+                return 'player';
             case 'scissors':
-                return 'cmp'
+                return 'cmp';
             case 'rock':
-                return 'cmp'
+                return 'cmp';
             case 'spock':
-                return 'player'
+                return 'player';
         }
     } else if (player === 'spock') {
         switch (cmp) {
             case 'paper':
-                return 'cmp'
+                return 'cmp';
             case 'scissors':
-                return 'player'
+                return 'player';
             case 'lizard':
-                return 'cmp'
+                return 'cmp';
             case 'rock':
-                return 'player'
+                return 'player';
         }
     }
 }
@@ -277,17 +276,17 @@ function battle() {
     let showCmp = document.getElementById('cmp-choice');
 
     if (player === undefined) {
-        message.textContent = 'You must choose an option'
+        message.textContent = 'You must choose an option';
         if (playing) {
             setTimeout(() => {
-                startGame()
-            }, 2000)
+                startGame();
+            }, 2000);
         }
     } else {
         noDisplayButtons()
         setTimeout(() => {
-            showPlayer.setAttribute('class', 'fight visible moveUp')
-            showCmp.setAttribute('class', 'fight visible moveDown')
+            showPlayer.setAttribute('class', 'fight visible moveUp');
+            showCmp.setAttribute('class', 'fight visible moveDown');
         })
         let cmp = cmpChoice();
         message.textContent = '';
@@ -295,19 +294,19 @@ function battle() {
             winner = whoWins(player, cmp);
             totalPoints(score, winner);
             finalWinner(score);
-        }, 2000)
+        }, 2000);
         setTimeout(() => {
             if (playing) {
                 setTimeout(() => {
-                    startGame()
-                }, 2000)
-            }
-        }, 2000)
+                    startGame();
+                }, 2000);
+            };
+        }, 2000);
         setTimeout(() => {
-            displayButtons()
-            showPlayer.setAttribute('class', 'fight disappear')
-            setCmpImage(cmpName.toLowerCase())
-        }, 3000)
+            displayButtons();
+            showPlayer.setAttribute('class', 'fight disappear');
+            setCmpImage(cmpName.toLowerCase());
+        }, 3000);
     }
 }
 
@@ -316,15 +315,15 @@ function battle() {
 */
 function totalPoints(score, winner) {
     if (winner === 'player') {
-        score.cmp = score.cmp - 1
+        score.cmp = score.cmp - 1;
     } else if (winner === 'cmp') {
-        score.player = score.player - 1
+        score.player = score.player - 1;
     } else {
-        displayMessageScore(null, null)
-        return null
+        displayMessageScore(null, null);
+        return null;
     }
     displayScore(winner);
-    return score
+    return score;
 }
 
 /**
@@ -334,13 +333,13 @@ function displayScore(winner) {
     let cmpScore = document.getElementById('score-cmp');
     let playerScore = document.getElementById('score-player');
     if (winner === 'player') {
-        cmpScore.children[0].remove()
-        displayMessageScore(winner, cmpScore.children.length)
+        cmpScore.children[0].remove();
+        displayMessageScore(winner, cmpScore.children.length);
     } else if (winner === 'cmp') {
-        playerScore.children[0].remove()
-        displayMessageScore(winner, playerScore.children.length)
+        playerScore.children[0].remove();
+        displayMessageScore(winner, playerScore.children.length);
     } else {
-        return null
+        return null;
     }
 }
 
@@ -358,10 +357,10 @@ function displayMessageScore(winner, loserPoints) {
                 message.textContent = 'Almost there!! Just 1 more win';
                 break;
             case 0:
-                message.textContent = 'Congratulations!!! You are the winner!!!'
+                message.textContent = 'Congratulations!!! You are the winner!!!';
                 break;
             default:
-                ''
+                '';
         }
     } else if (winner === 'cmp') {
         switch (loserPoints) {
@@ -375,10 +374,10 @@ function displayMessageScore(winner, loserPoints) {
                 message.textContent = 'That was bad luck, you lose the game';
                 break;
             default:
-                ''
+                '';
         }
     } else {
-        message.textContent = 'Play again'
+        message.textContent = 'Play again';
     }
 }
 
@@ -388,12 +387,12 @@ function displayMessageScore(winner, loserPoints) {
 function finalWinner(score) {
     if (score.player === 0) {
         playing = false;
-        return 'cmp'
+        return 'cmp';
     } else if (score.cmp === 0) {
         playing = false;
-        return 'player'
+        return 'player';
     } else {
-        return null
+        return null;
     }
 }
 
@@ -405,16 +404,16 @@ function displayChoice(choice, player) {
     let icon = `
         <i class="far fa-hand-${choice}"></i>
     `;
-    divToShow.innerHTML = icon
+    divToShow.innerHTML = icon;
 }
 
 /**
  * change class to not display buttons
  */
 function noDisplayButtons() {
-    let btns = document.getElementsByTagName('button')
+    let btns = document.getElementsByTagName('button');
     for (let btn of btns) {
-        btn.setAttribute('class', 'icon disappear')
+        btn.setAttribute('class', 'icon disappear');
     }
 }
 
@@ -422,9 +421,9 @@ function noDisplayButtons() {
  * change class to not display buttons
  */
 function displayButtons() {
-    let btns = document.getElementsByTagName('button')
+    let btns = document.getElementsByTagName('button');
     for (let btn of btns) {
-        btn.setAttribute('class', 'icon visible')
+        btn.setAttribute('class', 'icon visible');
     }
 }
 
@@ -432,9 +431,9 @@ function displayButtons() {
  * @returns a capitalized word
  */
 function capitalizeAWord(word) {
-    let firstLetter = word.substr(0, 1)
-    let firstCapital = firstLetter.toUpperCase()
-    let wordCapitalized = word.replace(firstLetter, firstCapital)
+    let firstLetter = word.substr(0, 1);
+    let firstCapital = firstLetter.toUpperCase();
+    let wordCapitalized = word.replace(firstLetter, firstCapital);
 
-    return wordCapitalized
+    return wordCapitalized;
 }
