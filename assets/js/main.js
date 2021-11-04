@@ -3,14 +3,23 @@ let cmpName = ''
 let body = document.getElementsByTagName('body')[0]
 let rivalImgDisplay = document.getElementById('cmp-choice');
 let playerChoice;
-let playing = true; // if true, the game has still been playing
+let isPlaying = true; // if true, the game has still been playing
 let score = {
     player: 3,
     cmp: 3
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    welcomeMessage();
+    let isPlayingAgain = localStorage.getItem('isPlayingAgain');
+    let localName = localStorage.getItem('playerName');
+    if(localName) {
+        playerName = localName;
+    }
+    if (isPlayingAgain === 'true') {
+        chooseRivalModal();
+    } else {
+        welcomeMessage();
+    }
 })
 
 /**
@@ -51,6 +60,8 @@ function startGameMessage() {
         playerName = playerInputName;
         chooseRivalModal();
     }
+    // add the player name to localstorage in case the game is playing again
+    localStorage.setItem('playerName', playerName);
 }
 
 /**
@@ -133,7 +144,7 @@ function startGame() {
     let modalRival = document.getElementsByClassName('modal rival')[0];
     playerChoice = undefined;
 
-    if (!playing) {
+    if (!isPlaying) {
         return false;
     }
     // if there is some modal displayed, hide it
@@ -283,7 +294,7 @@ function battle() {
     // if the player didn't get an option, show the message to ask him to do it
     if (player === undefined) {
         message.textContent = 'You must choose an option';
-        if (playing) {
+        if (isPlaying) {
             setTimeout(() => {
                 startGame();
             }, 2000);
@@ -293,7 +304,7 @@ function battle() {
         noDisplayButtons()
         setTimeout(() => {
             showPlayer.setAttribute('class', 'fight visible moveUp');
-            showCmp.setAttribute('class', 'fight visible moveDown');
+            showCmp.setAttribute('class', 'fight  moveDown');
         })
         // get the cmp choice
         let cmp = cmpChoice();
@@ -306,7 +317,7 @@ function battle() {
         }, 2000);
         // if there is not a final winner, the game continues
         setTimeout(() => {
-            if (playing) {
+            if (isPlaying) {
                 setTimeout(() => {
                     startGame();
                 }, 2000);
@@ -316,16 +327,45 @@ function battle() {
         setTimeout(() => {
             displayButtons();
             showPlayer.setAttribute('class', 'fight disappear');
-            setCmpImage(cmpName.toLowerCase());
+            showCmp.setAttribute('class', 'fight visible');
+            setCmpImage(cmpName);
             setTimeout(() => {
-                if (!playing) {
-                    if (confirm('play again?')) {
-                        location.reload();
-                    }
+                if (!isPlaying) {
+                    let div = document.createElement('div');
+                    let modal = `
+                        <div class="modal-message">
+                            <p>
+                                The winner is: ${winner === 'player' ? playerName : capitalizeAWord(cmpName)}
+                            </p>
+                            <div>
+                                <button onclick="playingAgain()">Play again?</button>
+                                <button onclick="notPlaying()">Quit</button>
+                            </div>
+                        </div>
+                    `;
+                    div.setAttribute('class', 'modal welcome');
+                    div.innerHTML = modal;
+                    body.appendChild(div);
                 }
             }, 2000)
         }, 3000);
     }
+}
+
+/**
+ * change isPlayingAgain variable to true, and the game begin again
+ */
+function playingAgain() {
+    localStorage.setItem('isPlayingAgain', 'true')
+    location.reload()
+}
+
+/**
+ * remove isPlayingAgain from localstorage and reload the page
+ */
+function notPlaying() {
+    localStorage.removeItem('isPlayingAgain')
+    location.reload()
 }
 
 /**
@@ -406,10 +446,10 @@ function displayMessageScore(winner, loserPoints) {
 // if some of the players lose all the points, the other player is the winner
 function finalWinner(score) {
     if (score.player === 0) {
-        playing = false;
+        isPlaying = false;
         return 'cmp';
     } else if (score.cmp === 0) {
-        playing = false;
+        isPlaying = false;
         return 'player';
     } else {
         return null;
