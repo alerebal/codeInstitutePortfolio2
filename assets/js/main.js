@@ -1,6 +1,6 @@
 let playerName;
 let cmpName;
-const body = document.getElementsByTagName('body')[0]
+const body = document.getElementsByTagName('body')[0];
 const rivalImgDisplay = document.getElementById('cmp-choice');
 let playerChoice;
 let isPlaying = true; // if true, the game has still been playing
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         welcomeMessage();
     }
-})
+});
 
 /**
  * display message to player can put their name and start the game
@@ -109,7 +109,7 @@ function chooseRivalModal() {
  */
 // once the rival has been selected, both names of the players are displayed in the screen, the image of the cmp player is shown and the game begin
 function chooseRival() {
-    const form = document.getElementsByTagName('form')[0].elements['rival'];
+    const form = document.getElementsByTagName('form')[0].elements.rival;
     // put the name of the player on the screem
     const playerNameDisplay = document.getElementById('player-chose-name');
     // put the name of the cmp player on the screen
@@ -157,16 +157,16 @@ function startGame() {
     /* 
     I could not use a regular setTimeout here, I had to use a IFEE https://codehandbook.org/understanding-settimeout-inside-for-loop-in-javascript/
     */
-    for (let i = 0; i < labels.length; i++) {
+    labels.forEach((lab, i) => {
         ((i) => {
             setTimeout(() => {
-                label.innerText = labels[i];
-                if (labels[i] === '') {
+                label.innerText = lab;
+                if (lab === '') {
                     battle();
                 }
             }, 700 * (i + 1));
-        })(i)
-    }
+        })(i);
+    });
 
 }
 
@@ -301,11 +301,11 @@ function battle() {
         }
     } else {
         // hide option buttons and show both options on screen
-        noDisplayButtons()
+        noDisplayButtons();
         setTimeout(() => {
             showPlayer.setAttribute('class', 'fight visible moveUp');
             showCmp.setAttribute('class', 'fight  moveDown');
-        })
+        });
         // get the cmp choice
         const cmp = cmpChoice();
         message.textContent = '';
@@ -321,7 +321,7 @@ function battle() {
                 setTimeout(() => {
                     startGame();
                 }, 2000);
-            };
+            }
         }, 2000);
         // display the option buttons and the cmp image again and hide the player option. If the game is over, show an alert to start it again
         setTimeout(() => {
@@ -347,7 +347,7 @@ function battle() {
                     div.innerHTML = modal;
                     body.appendChild(div);
                 }
-            }, 2000)
+            }, 2000);
         }, 3000);
     }
 }
@@ -356,16 +356,16 @@ function battle() {
  * change isPlayingAgain variable to true, and the game begin again
  */
 function playingAgain() {
-    localStorage.setItem('isPlayingAgain', 'true')
-    location.reload()
+    localStorage.setItem('isPlayingAgain', 'true');
+    location.reload();
 }
 
 /**
  * remove isPlayingAgain from localstorage and reload the page
  */
 function notPlaying() {
-    localStorage.removeItem('isPlayingAgain')
-    location.reload()
+    localStorage.removeItem('isPlayingAgain');
+    location.reload();
 }
 
 /**
@@ -419,7 +419,7 @@ function displayMessageScore(winner, loserPoints) {
                 message.textContent = 'Congratulations!!! You are the winner!!!';
                 break;
             default:
-                '';
+                message.textContent = '';
         }
     } else if (winner === 'cmp') {
         switch (loserPoints) {
@@ -433,7 +433,7 @@ function displayMessageScore(winner, loserPoints) {
                 message.textContent = 'That was bad luck, you lose the game';
                 break;
             default:
-                '';
+                message.textContent = '';
         }
     } else {
         message.textContent = 'Play again';
