@@ -1,10 +1,10 @@
 let playerName;
-let cmpName = ''
-let body = document.getElementsByTagName('body')[0]
-let rivalImgDisplay = document.getElementById('cmp-choice');
+let cmpName;
+const body = document.getElementsByTagName('body')[0]
+const rivalImgDisplay = document.getElementById('cmp-choice');
 let playerChoice;
 let isPlaying = true; // if true, the game has still been playing
-let score = {
+const score = {
     player: 3,
     cmp: 3
 };
@@ -12,7 +12,7 @@ let score = {
 document.addEventListener('DOMContentLoaded', () => {
     let isPlayingAgain = localStorage.getItem('isPlayingAgain');
     let localName = localStorage.getItem('playerName');
-    if(localName) {
+    if (localName) {
         playerName = localName;
     }
     if (isPlayingAgain === 'true') {
@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
  * display message to player can put their name and start the game
  */
 function welcomeMessage() {
-    let div = document.createElement('div');
-    let modal = `
+    const div = document.createElement('div');
+    const modal = `
     <div class="modal-message">
         <p>
             Welcome to play Rock, Paper, Scissors, Lizard, Spock Game
@@ -49,7 +49,7 @@ function welcomeMessage() {
  */
 // when the playerName is set, the chooseRivalModel function is triggered
 function startGameMessage() {
-    let playerInputName = document.getElementById('player-name').value;
+    const playerInputName = document.getElementById('player-name').value;
     if (playerInputName === '') {
         let conf = confirm(`If you don't put your name, we'll call you just player.`);
         if (conf) {
@@ -68,8 +68,8 @@ function startGameMessage() {
  * displays modal to choose rival
  */
 function chooseRivalModal() {
-    let rivals = ['bob', 'patrick', 'squidward'];
-    let div = document.createElement('div');
+    const rivals = ['bob', 'patrick', 'squidward'];
+    const div = document.createElement('div');
     let innerHTML = '';
     let modal = `    
         <form>
@@ -109,11 +109,11 @@ function chooseRivalModal() {
  */
 // once the rival has been selected, both names of the players are displayed in the screen, the image of the cmp player is shown and the game begin
 function chooseRival() {
-    let form = document.getElementsByTagName('form')[0].elements['rival'];
+    const form = document.getElementsByTagName('form')[0].elements['rival'];
     // put the name of the player on the screem
-    let playerNameDisplay = document.getElementById('player-chose-name');
+    const playerNameDisplay = document.getElementById('player-chose-name');
     // put the name of the cmp player on the screen
-    let rivalNameDisplay = document.getElementById('cmp-chose-name');
+    const rivalNameDisplay = document.getElementById('cmp-chose-name');
     cmpName = form.value;
     playerNameDisplay.innerText = playerName;
     rivalNameDisplay.innerText = capitalizeAWord(cmpName);
@@ -138,10 +138,10 @@ function setCmpImage(cmpPlayer) {
  */
 // count down for each game, battle function is triggered after it finished
 function startGame() {
-    let label = document.getElementById('game-message');
-    let labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', ''];
-    let modalWelcome = document.getElementsByClassName('modal welcome')[0];
-    let modalRival = document.getElementsByClassName('modal rival')[0];
+    const label = document.getElementById('game-message');
+    const labels = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock', ''];
+    const modalWelcome = document.getElementsByClassName('modal welcome')[0];
+    const modalRival = document.getElementsByClassName('modal rival')[0];
     playerChoice = undefined;
 
     if (!isPlaying) {
@@ -175,9 +175,9 @@ function startGame() {
  * assign value to playerChoice variable and pass it to the displayChoice function param
  */
 function onPlayerChoice(choice) {
-    let btn = document.getElementById(choice);
+    const btn = document.getElementById(choice);
     // If there is other button selected change its class
-    let btnSelected = document.getElementsByClassName('selected')[0];
+    const btnSelected = document.getElementsByClassName('selected')[0];
     if (btnSelected) {
         btnSelected.setAttribute('class', 'icon visible');
     }
@@ -193,7 +193,7 @@ function onPlayerChoice(choice) {
 // get a random number between 1 and 5 and give an option to every one of them. Then the displayChoice function is triggered and the choice is returned
 function cmpChoice() {
     let choice;
-    let random = Math.floor(Math.random() * 5) + 1;
+    const random = Math.floor(Math.random() * 5) + 1;
     switch (random) {
         case 1:
             choice = 'rock';
@@ -285,11 +285,11 @@ function whoWins(player, cmp) {
  * determine who is the winner of the small game
  */
 function battle() {
-    let player = playerChoice;
-    let message = document.getElementById('game-message');
+    const player = playerChoice;
+    const message = document.getElementById('game-message');
     let winner;
-    let showPlayer = document.getElementById('player-choice');
-    let showCmp = document.getElementById('cmp-choice');
+    const showPlayer = document.getElementById('player-choice');
+    const showCmp = document.getElementById('cmp-choice');
 
     // if the player didn't get an option, show the message to ask him to do it
     if (player === undefined) {
@@ -307,7 +307,7 @@ function battle() {
             showCmp.setAttribute('class', 'fight  moveDown');
         })
         // get the cmp choice
-        let cmp = cmpChoice();
+        const cmp = cmpChoice();
         message.textContent = '';
         // get the winner of the battle, show messages and points on the screen and find out if there is a final winner
         setTimeout(() => {
@@ -331,8 +331,8 @@ function battle() {
             setCmpImage(cmpName);
             setTimeout(() => {
                 if (!isPlaying) {
-                    let div = document.createElement('div');
-                    let modal = `
+                    const div = document.createElement('div');
+                    const modal = `
                         <div class="modal-message">
                             <p>
                                 The winner is: ${winner === 'player' ? playerName : capitalizeAWord(cmpName)}
@@ -389,8 +389,8 @@ function totalPoints(score, winner) {
  */
 // remove one point if there is a winner of a battle and trigger the displayMessageScore function
 function displayScore(winner) {
-    let cmpScore = document.getElementById('score-cmp');
-    let playerScore = document.getElementById('score-player');
+    const cmpScore = document.getElementById('score-cmp');
+    const playerScore = document.getElementById('score-player');
     if (winner === 'player') {
         cmpScore.children[0].remove();
         displayMessageScore(winner, score.cmp);
@@ -406,7 +406,7 @@ function displayScore(winner) {
 * display a message on the screen about game situation
 */
 function displayMessageScore(winner, loserPoints) {
-    let message = document.getElementById('game-message');
+    const message = document.getElementById('game-message');
     if (winner === 'player') {
         switch (loserPoints) {
             case 2:
@@ -460,8 +460,8 @@ function finalWinner(score) {
  * display selected choice
  */
 function displayChoice(choice, player) {
-    let divToShow = document.getElementById(`${player}-choice`);
-    let icon = `
+    const divToShow = document.getElementById(`${player}-choice`);
+    const icon = `
         <i class="far fa-hand-${choice}"></i>
     `;
     divToShow.innerHTML = icon;
@@ -471,7 +471,7 @@ function displayChoice(choice, player) {
  * change class to display buttons
  */
 function noDisplayButtons() {
-    let btns = document.getElementsByTagName('button');
+    const btns = document.getElementsByTagName('button');
     for (let btn of btns) {
         btn.setAttribute('class', 'icon disappear');
     }
@@ -481,7 +481,7 @@ function noDisplayButtons() {
  * change class to not display buttons
  */
 function displayButtons() {
-    let btns = document.getElementsByTagName('button');
+    const btns = document.getElementsByTagName('button');
     for (let btn of btns) {
         btn.setAttribute('class', 'icon visible');
     }
@@ -491,9 +491,9 @@ function displayButtons() {
  * @returns a capitalized word
  */
 function capitalizeAWord(word) {
-    let firstLetter = word.substr(0, 1);
-    let firstCapital = firstLetter.toUpperCase();
-    let wordCapitalized = word.replace(firstLetter, firstCapital);
+    const firstLetter = word.substr(0, 1);
+    const firstCapital = firstLetter.toUpperCase();
+    const wordCapitalized = word.replace(firstLetter, firstCapital);
 
     return wordCapitalized;
 }
