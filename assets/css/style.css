@@ -1,11 +1,38 @@
+/* General */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    background-color: var(--root-primary-cl);
+    color: var(--root-secondary-cl);
+}
+
 .text-center{
     text-align: center;
+}
+
+button {
+    padding: .5em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: ease-in-out 250ms;
+}
+
+.btn-modal {
+    background-color: var(--root-primary-cl);
+    color: var(--root-secondary-cl);
+    border: 1px solid var(--root-secondary-cl);
+    transition: ease-in-out 250ms;
+}
+
+.btn-modal:hover {
+    background-color: var(--root-secondary-cl);
+    border: 1px solid var(--root-primary-cl);
+    color: var(--root-primary-cl);
+    transition: ease-in-out 250ms;
 }
 
 ul {
@@ -16,7 +43,7 @@ ul {
 #game-area {
     max-width: 700px;
     margin: 0 auto;
-    background-color: grey;
+    background-color: var(--root-primary-cl);
     height: 100vh;
     position: relative;
 }
@@ -36,26 +63,20 @@ fieldset {
     bottom: 0;
 }
 
-#cmp-choice {
-    position: absolute;
-    /* bottom: 0; */
-}
-
 .fight {
-    font-size: 1.4em;
+    font-size: 1.6em;
+    color: var(--secondary-cl);
 }
 
 /* Play area */
 .play-area {
     height: 15vh;
     display: flex;
-    border: solid 1px red;
 }
 
 main {
     width: 70%;
     margin: 0 auto;
-    border: 1px solid yellow;
 }
 
 aside {
@@ -65,7 +86,6 @@ aside {
     display: flex;
     justify-content: center;
     align-items: center;
-    border:violet 1px solid
 }
 
 #cmp-aside {
@@ -92,6 +112,7 @@ aside {
 .name-of-player {
     position: absolute;
     top: 0;
+    color: var(--primary-cl);
 }
 
 .score {
@@ -100,7 +121,8 @@ aside {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
+    padding: 3em;
+    box-shadow: 0 3px 5px -1px var(--primary-cl);
 }
 
 #score-cmp {
@@ -129,23 +151,23 @@ aside {
 }
 
 .point:nth-child(3) {
-    background-color: green;
+    background-color: rgb(44, 158, 44);
 
 }
 
 .point:nth-child(2) {
-    background-color: yellow;
+    background-color: rgb(238, 238, 29);
 
 }
 
 .point:nth-child(1) {
-    background-color: red;
+    background-color: rgb(218, 18, 18);
 }
 
 /* Player area */
 #player-display-choice {
     position: relative;
-    height: 20vh;
+    height: 15vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,14 +175,13 @@ aside {
 
 #player-choice {
     position: absolute;
-    top: 0;
+    top: 20%;
 }
 
 #player-choices {
     height: 45vh;
     max-width: 400px;
     margin: 0 auto;
-    border: solid 1px rgb(110, 110, 40);
 }
 
 .row {
@@ -189,7 +210,25 @@ aside {
     align-items: center;
     border: 1px solid black;
     border-radius: 50%;
+    border-color: var(--primary-cl);
     overflow: hidden;
+}
+
+button.icon {
+    background-color: var(--root-primary-cl);
+    color: var(--primary-cl);
+    margin: .2em;
+    padding: 2.5em;
+    border-radius: 30%;
+    /* font-size: 1.2em; */
+}
+
+button.icon:hover {
+    opacity: .85;
+    transform: scale(1.05, 1.05);
+    border: 1px solid var(--secondary-cl);
+    color: var(--secondary-cl);
+    transition: ease-in-out 400ms;
 }
 
 .rivals {

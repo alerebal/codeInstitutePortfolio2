@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/themes.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/movements.css">
     <title>Document</title>
@@ -12,7 +13,7 @@
 
 <body>
     <h1 class="text-center">Bikini Bottom Wars Game</h1>
-    <div id="game-area">
+    <div id="game-area" class="bob-theme">
         <div class="cmp-area">
             <div id="cmp-display-choice">
                 <div class="fight" id="cmp-choice">
@@ -65,9 +66,6 @@
                     <button class="icon" id="paper" onclick="onPlayerChoice('paper')">
                         <i class="far fa-hand-paper"></i>
                     </button>
-
-                    <!-- <button class="icon" id="play-button" onclick="battle()">Play</button> -->
-
                     <button class="icon" id="scissors" onclick="onPlayerChoice('scissors')">
                         <i class="far fa-hand-scissors"></i>
                     </button>
@@ -86,6 +84,7 @@
     <!-- font awesome script-->
     <script src="https://kit.fontawesome.com/60074bb507.js" crossorigin="anonymous"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/utils.js"></script>
 </body>
 
 </html>

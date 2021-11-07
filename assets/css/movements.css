@@ -1,11 +1,17 @@
-.selected {
-    background-color: cadetblue;
-    transition: ease-in-out 250ms;
-}
+
 .visible {
     visibility: visible;
     transition: ease-in-out 250ms;
 }
+
+button.icon.selected {
+    border: 1px solid var(--secondary-cl);
+    color: var(--secondary-cl);
+    background-color: var(--primary-cl);
+    transition: ease-in-out 250ms;
+}
+
+
 .disappear {
     visibility: hidden;
     transition: ease-in-out 250ms;
@@ -17,18 +23,20 @@
 
 @keyframes movingUp {
     from  {
-        transform: translateY(100%);
+        transform: translateY(20%);
+        opacity: 0;
     }
     to {
         transform: translateY(0%);
+        opacity: 1;
     }
 }
 
 .moveDown {
-    animation: movingDown ease-in-out 1s;
+    animation: showUp ease-in-out 2s;
 }
 
-@keyframes movingDown {
+@keyframes showUp {
     from  {
         opacity: 0;
     }
@@ -50,9 +58,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: cadetblue;
+    background-color: var(--root-primary-cl);
     border-radius: 15px;
-    box-shadow: 0 0 2px 1px rgb(48, 47, 47);
+    box-shadow: 0 0 4px 1px var(--root-accent-cl);
+}
+
+.modal .rivals {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal .rivals .rival {
+    margin: 1em;
 }
 
 .modal-input {

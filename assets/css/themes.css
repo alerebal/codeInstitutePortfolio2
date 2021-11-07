@@ -1,0 +1,21 @@
+:root {
+    --root-primary-cl: rgb(38, 37, 37);
+    --root-secondary-cl: white;
+    --root-accent-cl: rgb(199, 204, 58);
+}   
+
+.bob-theme {
+    --primary-cl: rgb(199, 204, 58);
+    /* --secondary-cl: rgb(230,0,0); */
+    --secondary-cl: rgb(41, 138, 170);
+}
+
+.patrick-theme {
+    --primary-cl: rgb(255,146,118);
+    --secondary-cl: rgb(151, 107, 201);
+}
+
+.squidward-theme {
+    --primary-cl: rgb(183,214,203);
+    --secondary-cl: rgb(250, 139, 142);
+}
