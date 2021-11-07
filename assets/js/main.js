@@ -79,7 +79,7 @@ function chooseRivalModal() {
     for (let rival of rivals) {
         innerHTML += `
             <div class="rival">
-                <label for="${rival}">
+                <label for="${rival}" class="${rival}-theme">
                     <div class="icon">
                         <img src="assets/images/icons/${rival}.png" alt="${rival}">
                     </div>
@@ -94,7 +94,7 @@ function chooseRivalModal() {
     innerHTML += `
         </div>
         <div class="btn">
-            <input type="button" value="Choose" onclick="chooseRival()">
+            <button class="btn-modal" type="button" onclick="chooseRival()">Choose</button>
         </div>
     </form>
     `;
@@ -117,6 +117,7 @@ function chooseRival() {
     cmpName = form.value;
     playerNameDisplay.innerText = playerName;
     rivalNameDisplay.innerText = capitalizeAWord(cmpName);
+    changeTheme(cmpName);
     setCmpImage(cmpName);
     startGame();
 }
@@ -338,8 +339,8 @@ function battle() {
                                 The winner is: ${winner === 'player' ? playerName : capitalizeAWord(cmpName)}
                             </p>
                             <div>
-                                <button onclick="playingAgain()">Play again?</button>
-                                <button onclick="notPlaying()">Quit</button>
+                                <button class="btn-modal" onclick="playingAgain()">Play again?</button>
+                                <button class="btn-modal" onclick="notPlaying()">Quit</button>
                             </div>
                         </div>
                     `;
@@ -465,35 +466,4 @@ function displayChoice(choice, player) {
         <i class="far fa-hand-${choice}"></i>
     `;
     divToShow.innerHTML = icon;
-}
-
-/**
- * change class to display buttons
- */
-function noDisplayButtons() {
-    const btns = document.getElementsByTagName('button');
-    for (let btn of btns) {
-        btn.setAttribute('class', 'icon disappear');
-    }
-}
-
-/**
- * change class to not display buttons
- */
-function displayButtons() {
-    const btns = document.getElementsByTagName('button');
-    for (let btn of btns) {
-        btn.setAttribute('class', 'icon visible');
-    }
-}
-
-/**
- * @returns a capitalized word
- */
-function capitalizeAWord(word) {
-    const firstLetter = word.substr(0, 1);
-    const firstCapital = firstLetter.toUpperCase();
-    const wordCapitalized = word.replace(firstLetter, firstCapital);
-
-    return wordCapitalized;
 }
