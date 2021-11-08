@@ -29,14 +29,22 @@ function welcomeMessage() {
     const div = document.createElement('div');
     const modal = `
     <div class="modal-message">
+        <p class="text-center lead">
+            Welcome to play Bikini Bottom Wars Game.
+        </p>
         <p>
-            Welcome to play Rock, Paper, Scissors, Lizard, Spock Game
+            Based on the game <a href="https://www.instructables.com/How-to-Play-Rock-Paper-Scissors-Lizard-Spock/" target="_blank" rel="noopener" aria-label="Here you can go to learn the rules">Rock, Paper, Scissors, Lizard, Spock Game</a>, choose a rival of one of the three main characters of Bikini Bottom and fight against him.
         </p>
         <p>
             Put your 
-            <input type="text" class="modal-input" maxlength='15' name="player-name" id="player-name" placeholder="name here">
-            and start <span onclick="startGameMessage()">playing</span>.
+            <input type="text" aria-label="name of the player" class="modal-input" maxlength='15' name="player-name" id="player-name" placeholder="name here">
+            and start <span aria-label="Press here to start" onclick="startGameMessage()">playing</span>.
         </p>
+        <div class="btn">
+            <button class="btn-modal" aria-label="Press here to start" onclick="startGameMessage()">
+                Press to play
+            </button>
+        </div>
     </div>
     `;
     div.setAttribute('class', 'modal welcome');
@@ -79,7 +87,7 @@ function chooseRivalModal() {
     for (let rival of rivals) {
         innerHTML += `
             <div class="rival">
-                <label for="${rival}" class="${rival}-theme">
+                <label for="${rival}" aria-label="${rival}"" class="${rival}-theme">
                     <div class="icon">
                         <img src="assets/images/icons/${rival}.png" alt="${rival}">
                     </div>

@@ -14,7 +14,8 @@ function capitalizeAWord(word) {
  */
 function changeTheme(rival) {
     const gameArea = document.getElementById('game-area');
-    gameArea.setAttribute('class', `${rival}-theme`)
+    gameArea.setAttribute('class', `${rival}-theme`);
+    document.getElementsByTagName('h1')[0].classList = `text-center ${rival}-theme`;
 }
 
 /**

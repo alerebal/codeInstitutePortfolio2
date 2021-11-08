@@ -10,6 +10,19 @@ body {
     color: var(--root-secondary-cl);
 }
 
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--root-accent-cl);
+}
+
+h1 {
+    color: var(--secondary-cl);
+}
+
 .text-center{
     text-align: center;
 }
@@ -19,24 +32,6 @@ button {
     cursor: pointer;
     border-radius: 5px;
     transition: ease-in-out 250ms;
-}
-
-.btn-modal {
-    background-color: var(--root-primary-cl);
-    color: var(--root-secondary-cl);
-    border: 1px solid var(--root-secondary-cl);
-    transition: ease-in-out 250ms;
-}
-
-.btn-modal:hover {
-    background-color: var(--root-secondary-cl);
-    border: 1px solid var(--root-primary-cl);
-    color: var(--root-primary-cl);
-    transition: ease-in-out 250ms;
-}
-
-ul {
-    list-style: none;
 }
 
 /* Game area */
@@ -65,7 +60,7 @@ fieldset {
 
 .fight {
     font-size: 1.6em;
-    color: var(--secondary-cl);
+    color: var(--primary-cl);
 }
 
 /* Play area */
@@ -107,6 +102,7 @@ aside {
 .message-area p {
     position: absolute;
     font-size: 1.3em;
+    color: var(--secondary-cl);
 }
 
 .name-of-player {
@@ -122,7 +118,7 @@ aside {
     justify-content: center;
     align-items: center;
     padding: 3em;
-    box-shadow: 0 3px 5px -1px var(--primary-cl);
+    box-shadow: 0 3px 5px -1px var(--secondary-cl);
 }
 
 #score-cmp {
@@ -208,9 +204,8 @@ aside {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid var(--primary-cl);
     border-radius: 50%;
-    border-color: var(--primary-cl);
     overflow: hidden;
 }
 
@@ -220,7 +215,6 @@ button.icon {
     margin: .2em;
     padding: 2.5em;
     border-radius: 30%;
-    /* font-size: 1.2em; */
 }
 
 button.icon:hover {

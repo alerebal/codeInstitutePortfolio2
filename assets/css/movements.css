@@ -63,6 +63,30 @@ button.icon.selected {
     box-shadow: 0 0 4px 1px var(--root-accent-cl);
 }
 
+.modal .lead {
+    font-size: 1.2em;
+    font-weight: 900;
+    margin-bottom: .4em;
+}
+
+.modal p {
+    margin-bottom: .7em;
+}
+
+.btn-modal {
+    background-color: var(--root-primary-cl);
+    color: var(--root-accent-cl);
+    border: 1px solid var(--root-accent-cl);
+    transition: ease-in-out 250ms;
+}
+
+.btn-modal:hover {
+    background-color: var(--root-accent-cl);
+    border: 1px solid var(--root-primary-cl);
+    color: var(--root-primary-cl);
+    transition: ease-in-out 250ms;
+}
+
 .modal .rivals {
     padding: 1em;
     display: flex;
@@ -77,10 +101,18 @@ button.icon.selected {
     width: 20%;
     border: none;
     padding: .2em;
+    background-color: var(--root-primary-cl);
+    color: var(--root-accent-cl);
+}
+
+.modal-input::placeholder {
+    color: var(--root-accent-cl);
+    padding: .5em;
 }
 
 .modal-message span {
     font-size: large;
     font-weight: bold;
     cursor: pointer;
+    color: var(--root-accent-cl);
 }
