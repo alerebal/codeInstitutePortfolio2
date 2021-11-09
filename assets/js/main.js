@@ -115,16 +115,18 @@ function chooseRivalModal() {
 /**
  * allow the player to choose a rival. set cmp player name
  */
-// once the rival has been selected, both names of the players are displayed in the screen, the image of the cmp player is shown and the game begin
+// once the rival has been selected, both names of the players are displayed in the screen, the image of the cmp player and the score are shown and the game begin
 function chooseRival() {
     const form = document.getElementsByTagName('form')[0].elements.rival;
-    // put the name of the player on the screem
     const playerNameDisplay = document.getElementById('player-chose-name');
-    // put the name of the cmp player on the screen
     const rivalNameDisplay = document.getElementById('cmp-chose-name');
+    const playerScoreDisplay = document.getElementById('score-player');
+    const rivalScoreDisplay = document.getElementById('score-cmp');
     cmpName = form.value;
     playerNameDisplay.innerText = playerName;
     rivalNameDisplay.innerText = capitalizeAWord(cmpName);
+    playerScoreDisplay.setAttribute('class', 'visible');
+    rivalScoreDisplay.setAttribute('class', 'visible');
     changeTheme(cmpName);
     setCmpImage(cmpName);
     startGame();

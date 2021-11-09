@@ -1,7 +1,7 @@
-
 .visible {
     visibility: visible;
-    transition: ease-in-out 250ms;
+    opacity: 1;
+    transition: ease-in-out 500ms;
 }
 
 button.icon.selected {
@@ -14,6 +14,7 @@ button.icon.selected {
 
 .disappear {
     visibility: hidden;
+    opacity: 0;
     transition: ease-in-out 250ms;
 }
 
@@ -48,7 +49,9 @@ button.icon.selected {
 .modal {
     z-index: 3;
     width: 50%;
+    max-width: 500px;
     height: 50%;
+    max-width: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
