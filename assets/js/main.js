@@ -36,9 +36,9 @@ function welcomeMessage() {
             Based on the game <a href="https://www.instructables.com/How-to-Play-Rock-Paper-Scissors-Lizard-Spock/" target="_blank" rel="noopener" aria-label="Here you can go to learn the rules">Rock, Paper, Scissors, Lizard, Spock Game</a>, choose a rival of one of the three main characters of Bikini Bottom and fight against him.
         </p>
         <p>
-            Put your 
+            Enter your 
             <input type="text" aria-label="name of the player" class="modal-input" maxlength='15' name="player-name" id="player-name" placeholder="name here">
-            and start <span aria-label="Press here to start" onclick="startGameMessage()">playing</span>.
+            and press the button.
         </p>
         <div class="btn">
             <button class="btn-modal" aria-label="Press here to start" onclick="startGameMessage()">
@@ -343,19 +343,37 @@ function battle() {
             setTimeout(() => {
                 if (!isPlaying) {
                     const div = document.createElement('div');
-                    const modal = `
-                        <div class="modal-message">
-                            <p>
-                                The winner is: ${winner === 'player' ? playerName : capitalizeAWord(cmpName)}
-                            </p>
-                            <div>
+                    let modal = '';
+                    if(winner === 'player') {
+                        modal = `
+                            <div class="modal-message">
+                                <p class="text-center lead">
+                                    Great game!! 
+                                </p>
+                                <p>
+                                    The great choices you made led you to victory.
+                                </p>
+                        `;
+                    } else {
+                        modal = `
+                            <div class="modal-message">
+                                <p class="text-center lead">
+                                    Good game!!
+                                </p>
+                                <p>
+                                    Don't worry, you can play again. Next time, the score may be different.
+                                </p>
+                        `;
+                    }
+                    let btns = `
+                            <div class="btn">
                                 <button class="btn-modal" onclick="playingAgain()">Play again?</button>
                                 <button class="btn-modal" onclick="notPlaying()">Quit</button>
                             </div>
                         </div>
                     `;
                     div.setAttribute('class', 'modal welcome');
-                    div.innerHTML = modal;
+                    div.innerHTML = modal + btns;
                     body.appendChild(div);
                 }
             }, 2000);

@@ -77,10 +77,13 @@ button.icon.selected {
 }
 
 .btn-modal {
+    min-width: 30%;
     background-color: var(--root-primary-cl);
     color: var(--root-accent-cl);
     border: 1px solid var(--root-accent-cl);
     transition: ease-in-out 250ms;
+    margin: 0 auto;
+    margin-top: 1.5em;
 }
 
 .btn-modal:hover {
@@ -91,7 +94,6 @@ button.icon.selected {
 }
 
 .modal .rivals {
-    padding: 1em;
     display: flex;
     justify-content: space-between;
 }
@@ -103,14 +105,13 @@ button.icon.selected {
 .modal-input {
     width: 20%;
     border: none;
-    padding: .2em;
     background-color: var(--root-primary-cl);
     color: var(--root-accent-cl);
+    padding: .1em .5em;
 }
 
 .modal-input::placeholder {
     color: var(--root-accent-cl);
-    padding: .5em;
 }
 
 .modal-message span {
