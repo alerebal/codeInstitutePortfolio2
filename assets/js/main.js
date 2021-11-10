@@ -154,6 +154,7 @@ function startGame() {
     const modalWelcome = document.getElementsByClassName('modal welcome')[0];
     const modalRival = document.getElementsByClassName('modal rival')[0];
     playerChoice = undefined;
+    displayButtons();
 
     if (!isPlaying) {
         return false;
@@ -295,6 +296,7 @@ function whoWins(player, cmp) {
 /**
  * determine who is the winner of the small game
  */
+// The optoin buttons are shown and hidden to prevent the player from choosing an option before the startGame function is triggered. If is not this way it give me a bug
 function battle() {
     const player = playerChoice;
     const message = document.getElementById('game-message');
@@ -306,6 +308,7 @@ function battle() {
     if (player === undefined) {
         message.textContent = 'You must choose an option';
         if (isPlaying) {
+            noDisplayButtons();
             setTimeout(() => {
                 startGame();
             }, 2000);
@@ -336,7 +339,6 @@ function battle() {
         }, 2000);
         // display the option buttons and the cmp image again and hide the player option. If the game is over, show an alert to start it again
         setTimeout(() => {
-            displayButtons();
             showPlayer.setAttribute('class', 'fight disappear');
             showCmp.setAttribute('class', 'fight visible');
             setCmpImage(cmpName);
@@ -344,7 +346,7 @@ function battle() {
                 if (!isPlaying) {
                     const div = document.createElement('div');
                     let modal = '';
-                    if(winner === 'player') {
+                    if (winner === 'player') {
                         modal = `
                             <div class="modal-message">
                                 <p class="text-center lead">
