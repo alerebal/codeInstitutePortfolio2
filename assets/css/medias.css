@@ -65,3 +65,21 @@
     }
 }
 
+@media screen and (max-width: 360px) {
+    .modal {
+        width: 98%;
+        height: 70%;
+    }
+
+    .modal .rivals .rival {
+        margin: .1em;
+    }
+    
+    .modal-input {
+        width: 30%;
+    }
+
+    .second {
+        justify-content: space-around;
+    }
+}
