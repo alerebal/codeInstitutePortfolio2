@@ -1,0 +1,67 @@
+@media screen and (max-width: 900px) {
+    #game-area {
+        width: 95%;
+    }
+
+    .modal {
+        width: 70%;
+    }
+
+
+}
+
+@media screen and (max-width: 600px) {
+    .modal {
+        width: 90%;
+        height: 50%;
+    }
+
+    .modal .rivals .rival {
+        margin: .5em;
+    }
+    
+    .modal-input {
+        width: 24%;
+        padding: 0px;
+    }
+
+    /* Play area */
+    .play-area {
+        height: 15vh;
+        display: flex;
+    }
+
+    main {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    aside {
+        top: 5%;
+    }
+
+    #cmp-aside {
+        left: 5%;
+    }
+    
+    #player-aside {
+        right: 5%;
+    }
+
+    .message-area {
+        margin: 1em 1em 2em 1em;
+    }
+
+    /* Player-area */
+    @keyframes movingUp {
+        from  {
+            transform: translateY(50%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0%);
+            opacity: 1;
+        }
+    }
+}
+
