@@ -11,6 +11,11 @@
 body {
     background-color: var(--root-primary-cl);
     color: var(--root-secondary-cl);
+    font-family: var(--ff-primary)
+}
+
+input {
+    font-family: var(--ff-primary);
 }
 
 ul {
@@ -34,6 +39,7 @@ button {
     padding: .5em;
     cursor: pointer;
     border-radius: 5px;
+    font-family: var(--ff-primary);
     transition: ease-in-out 250ms;
 }
 
