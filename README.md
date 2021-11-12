@@ -1,19 +1,26 @@
 # Bikini Bottom Wars Game
 
+![Image](assets/images/readme/images/different-screens.png)
+
 Based on the [Rock, Paper, Scissors, Lizard, Spock game](https://www.instructables.com/How-to-Play-Rock-Paper-Scissors-Lizard-Spock/), the player chooses to play against a SpongeBob show character.
 
-The first modal that is shown to the player is that they choose their name and start to play. If they do not choose one, an alert will be displayed to indicate that they will simply be called 'Player' in the game.
+## Features
 
-- picture of the modal
-- picture of the alert
+The first modal that is shown to the player is that they choose their name and start to play. 
 
-The second modal is for player to choose a rival. There are three different options: SpongeBob, Patrick star and Squidward. Spongebob is selected by default.
+![Image](assets/images/readme/images/modal-1.png)
 
-- picture of the modal
+If they do not choose one, an alert(confirm alert) will be displayed to indicate that they will simply be called 'Player' in the game.
+
+![Image](assets/images/readme/images/modal-1-alert.png)
+
+The second modal is for player to choose a rival. There are three different options: SpongeBob, Patrick star and Squidward. Each of them has a different theme color. Spongebob is selected by default.
+
+![Image](assets/images/readme/images/modal-2.png)
 
 Once the player chooses an opponent, the game begins. A countdown is started using the words of the game and when it ends the first battle is defined. 
 
-- gif whit the countdown
+
 
 The player must choose an option during this countdown, if not, the countdown starts again and a message is displayed to the player.
 
@@ -27,7 +34,34 @@ The first to get 3 battles wins the game.
 
 - picture of the message
 
+## Testing
 
+### Validator Testing
+
+#### HTML
+
+- No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/)
+
+![Image](assets/images/readme/validators/html-validator.png)
+
+#### CSS
+
+- No errors were found when passing through the official [Jigsaw validator](https://jigsaw.w3.org/css-validator)
+
+![Image](assets/images/readme/validators/css-validator.png)
+
+
+#### JS
+
+- No errors were found when passing through the official [JsHint validator](https://jshint.com/)
+- Detects 5 unused variables. They are functions that I have used within other functions.
+
+![Image](assets/images/readme/validators/jshint-test.png)
+
+
+### Lighthouse Testing
+
+![Image](assets/images/readme/validators/lighthouse-test.png)
 
 
 ## Deployment

@@ -434,7 +434,7 @@ function displayScore(winner) {
 }
 
 /**
-* display a message on the screen about game situation
+* display a message on the screen about game state
 */
 function displayMessageScore(winner, loserPoints) {
     const message = document.getElementById('game-message');
