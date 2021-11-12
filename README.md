@@ -8,23 +8,23 @@ Based on the [Rock, Paper, Scissors, Lizard, Spock game](https://www.instructabl
 
 The first modal that is shown to the player is that they choose their name and start to play. 
 
-![First modal](assets/images/readme/images/modal-1.png)
+![First modal](assets/images/readme/images/modal-1-500.png)
 
 If they do not choose one, an alert(confirm alert) will be displayed to indicate that they will simply be called 'Player' in the game.
 
-![Alert, player did not chose a name](assets/images/readme/images/modal-1-alert.png)
+![Alert, player did not chose a name](assets/images/readme/images/modal-1-alert-500.png)
 
 The second modal is for player to choose a rival. There are three different options: SpongeBob, Patrick star and Squidward. Spongebob is selected by default.
 
-![Modal to chose a rivel](assets/images/readme/images/modal-2.png)
+![Modal to chose a rivel](assets/images/readme/images/modal-2-500.png)
 
 #### Each of them has a different theme color.
 
-![Bob theme](assets/images/readme/images/bob-theme.png)
+![Bob theme](assets/images/readme/images/bob-theme-500.png)
 
-![Patrick theme](assets/images/readme/images/patrick-theme.png)
+![Patrick theme](assets/images/readme/images/patrick-theme-500.png)
 
-![Squidward theme](assets/images/readme/images/squidward-theme.png)
+![Squidward theme](assets/images/readme/images/squidward-theme-500.png)
 
 Once the player chooses an opponent, the game begins. A countdown is started using the words of the game and when it ends the first battle is defined. 
 
@@ -42,12 +42,12 @@ The first to get 3 battles wins the game.
 
 The final modal is shown to allow the player to play again or quit the game.
 
-![Final modal](assets/images/readme/images/modal-final.png)
+![Final modal](assets/images/readme/images/modal-final-500.png)
 
 ## Features Left to Implement
 
-    - It would be nice if the game can be played between two friends. So a feature that would allow them to play together would be the next step in the game.
-    - I will need to put the game on a server and give it some functionality to allow each player to choose between playing against a friend or against the computer.
+- It would be nice if the game can be played between two friends. So a feature that would allow them to play together would be the next step in the game.
+- I will need to put the game on a server and give it some functionality to allow each player to choose between playing against a friend or against the computer.
 
 ## Testing
 
