@@ -8,15 +8,23 @@ Based on the [Rock, Paper, Scissors, Lizard, Spock game](https://www.instructabl
 
 The first modal that is shown to the player is that they choose their name and start to play. 
 
-![Image](assets/images/readme/images/modal-1.png)
+![First modal](assets/images/readme/images/modal-1.png)
 
 If they do not choose one, an alert(confirm alert) will be displayed to indicate that they will simply be called 'Player' in the game.
 
-![Image](assets/images/readme/images/modal-1-alert.png)
+![Alert, player did not chose a name](assets/images/readme/images/modal-1-alert.png)
 
-The second modal is for player to choose a rival. There are three different options: SpongeBob, Patrick star and Squidward. Each of them has a different theme color. Spongebob is selected by default.
+The second modal is for player to choose a rival. There are three different options: SpongeBob, Patrick star and Squidward. Spongebob is selected by default.
 
-![Image](assets/images/readme/images/modal-2.png)
+![Modal to chose a rivel](assets/images/readme/images/modal-2.png)
+
+#### Each of them has a different theme color.
+
+![Bob theme](assets/images/readme/images/bob-theme.png)
+
+![Patrick theme](assets/images/readme/images/patrick-theme.png)
+
+![Squidward theme](assets/images/readme/images/squidward-theme.png)
 
 Once the player chooses an opponent, the game begins. A countdown is started using the words of the game and when it ends the first battle is defined. 
 
@@ -34,7 +42,12 @@ The first to get 3 battles wins the game.
 
 The final modal is shown to allow the player to play again or quit the game.
 
+![Final modal](assets/images/readme/images/modal-final.png)
 
+## Features Left to Implement
+
+    - It would be nice if the game can be played between two friends. So a feature that would allow them to play together would be the next step in the game.
+    - I will need to put the game on a server and give it some functionality to allow each player to choose between playing against a friend or against the computer.
 
 ## Testing
 
@@ -65,6 +78,11 @@ The final modal is shown to allow the player to play again or quit the game.
 
 ![Image](assets/images/readme/validators/lighthouse-test.png)
 
+## Bugs
+
+If the player chose an option before the countdown begins, during the game status message, this option was not received by the function that has to do it and the game could not be played.
+
+What I did was hide the option buttons during that part of the game. I moved the displayButtons function to the startGame function and the problem was solved.
 
 ## Deployment
 
@@ -75,3 +93,15 @@ The final modal is shown to allow the player to play again or quit the game.
     - A link to the newly created page will be displayed here.
 
 [Here you can see the page](https://alerebal.github.io/codeInstitutePortfolio2)  
+
+## Resources
+
+### Content 
+
+#### The images of the Bikini Bottom characters were taken from
+
+PNGITEM - https://www.pngitem.com/
+
+#### The option buttons images are from 
+
+Font Awesome - https://fontawesome.com/
