@@ -20,19 +20,21 @@ The second modal is for player to choose a rival. There are three different opti
 
 Once the player chooses an opponent, the game begins. A countdown is started using the words of the game and when it ends the first battle is defined. 
 
-
-
 The player must choose an option during this countdown, if not, the countdown starts again and a message is displayed to the player.
 
-- picture of the message
+![countdown-no-choice](https://user-images.githubusercontent.com/39537127/141439507-dee9ad68-73f5-496b-9321-0350bde93169.GIF)
 
 If the player chose an option, it is compared to the computer's choice to determine who is the winner of that battle. 
 
-- picture of the message
+![countdown-choice](https://user-images.githubusercontent.com/39537127/141439562-f0eca3c0-5acf-4cec-aa1e-9df4f5a1c255.GIF)
 
 The first to get 3 battles wins the game.
 
-- picture of the message
+![final-message](https://user-images.githubusercontent.com/39537127/141442004-06999a7e-68c7-487d-8afb-af3f41812174.GIF)
+
+The final modal is shown to allow the player to play again or quit the game.
+
+
 
 ## Testing
 
