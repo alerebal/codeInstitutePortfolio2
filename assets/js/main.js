@@ -318,7 +318,7 @@ function battle() {
         noDisplayButtons();
         setTimeout(() => {
             showPlayer.setAttribute('class', 'fight visible moveUp');
-            showCmp.setAttribute('class', 'fight  moveDown');
+            showCmp.setAttribute('class', 'fight  showCmpChoice');
         });
         // get the cmp choice
         const cmp = cmpChoice();

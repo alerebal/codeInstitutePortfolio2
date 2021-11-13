@@ -21,7 +21,6 @@
 @media screen and (max-width: 600px) {
     .modal {
         width: 90%;
-        height: 50%;
     }
 
     .modal .rivals .rival {
@@ -34,11 +33,6 @@
     }
 
     /* Play area */
-    .play-area {
-        height: 15vh;
-        display: flex;
-    }
-
     main {
         width: 90%;
         margin: 0 auto;
