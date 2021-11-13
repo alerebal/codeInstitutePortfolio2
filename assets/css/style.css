@@ -222,14 +222,6 @@ button.icon {
     border-radius: 30%;
 }
 
-button.icon:hover {
-    opacity: .85;
-    transform: scale(1.05, 1.05);
-    border: 1px solid var(--secondary-cl);
-    color: var(--secondary-cl);
-    transition: ease-in-out 400ms;
-}
-
 .rivals {
     display: flex;
     justify-content: space-evenly;
