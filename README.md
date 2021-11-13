@@ -80,9 +80,17 @@ The final modal is shown to allow the player to play again or quit the game.
 
 ## Bugs
 
+### Option was not caught by the function
 If the player chose an option before the countdown begins, during the game status message, this option was not received by the function that has to do it and the game could not be played.
 
 What I did was hide the option buttons during that part of the game. I moved the displayButtons function to the startGame function and the problem was solved.
+
+### Buttons remained as hover after has been selected
+In screens smaller than 900px, the option buttons remained as hover after their has been selected. 
+
+What I did was add a media query for screens bigger than 900px and add the hover feature inside of it.
+
+![Fix hover problem](assets/images/readme/images/fix-button-hover.png)
 
 ## Deployment
 

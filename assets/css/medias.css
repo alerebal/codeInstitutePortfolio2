@@ -1,4 +1,4 @@
-/* This media is just to put button icon hover. When I used this in the style.css and the player was playing in a screen small than 900 px, the button remained as hover after each game was played and is not what I want to happen, so I used hover just in screens biger than 900 px*/
+/* This media is just to put button icon hover. When I used this in the style.css and the player was playing in a screen small than 900 px, the button remained as hover after each game was played and is not what I want to happen, so I used hover just in screens bigger than 900 px*/
 @media screen and (min-width: 900px) {
     button.icon:hover {
         transform: scale(1.05, 1.05);
