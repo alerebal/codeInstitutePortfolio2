@@ -2,7 +2,10 @@
 
 ![Image](assets/images/readme/images/different-screens.png)
 
-Based on the [Rock, Paper, Scissors, Lizard, Spock game](https://www.instructables.com/How-to-Play-Rock-Paper-Scissors-Lizard-Spock/), the player chooses to play against a SpongeBob show character.
+This page has been designed for any user who likes the traditional game Rock, Paper, Scissors and wants to discover the version of the game with extended functions for the fans of Stars Wars. Here the player chooses to play against a Bikini Bottom Show character.
+
+[Rock, Paper, Scissors, Lizard, Spock](https://www.instructables.com/How-to-Play-Rock-Paper-Scissors-Lizard-Spock/) is an extension of the classic game of chance, Rock, Paper, Scissors, created by Sam Kass and Karen Bryla
+
 
 ## Features
 
@@ -65,14 +68,15 @@ The final modal is shown to allow the player to play again or quit the game.
 
 ![Image](assets/images/readme/validators/css-validator.png)
 
+##### Gave me some warnings about variables
 
 #### JS
 
 - No errors were found when passing through the official [JsHint validator](https://jshint.com/)
-- Detects 5 unused variables. They are functions that I have used within other functions.
 
 ![Image](assets/images/readme/validators/jshint-test.png)
 
+##### Detects 5 unused variables. They are functions that I have used within other functions.
 
 ### Lighthouse Testing
 

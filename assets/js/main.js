@@ -59,7 +59,7 @@ function welcomeMessage() {
 function startGameMessage() {
     const playerInputName = document.getElementById('player-name').value;
     if (playerInputName === '') {
-        let conf = confirm(`If you don't put your name, we'll call you just player.`);
+        let conf = confirm(`If you don't put your name, we'll call you just 'Player'.`);
         if (conf) {
             playerName = 'Player';
             chooseRivalModal();
