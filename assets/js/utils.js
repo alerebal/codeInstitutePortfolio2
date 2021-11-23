@@ -37,3 +37,14 @@ function displayButtons() {
         btn.setAttribute('class', 'icon visible');
     }
 }
+
+/**
+ * display selected choice
+ */
+ function displayChoice(choice, player) {
+    const divToShow = document.getElementById(`${player}-choice`);
+    const icon = `
+        <i class="far fa-hand-${choice}"></i>
+    `;
+    divToShow.innerHTML = icon;
+}
