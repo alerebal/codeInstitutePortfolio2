@@ -154,8 +154,8 @@ function startGame() {
     const modalWelcome = document.getElementsByClassName('modal welcome')[0];
     const modalRival = document.getElementsByClassName('modal rival')[0];
     playerChoice = undefined;
+    
     displayButtons();
-
     if (!isPlaying) {
         return false;
     }
@@ -179,9 +179,7 @@ function startGame() {
             }, 700 * (i + 1));
         })(i);
     });
-
 }
-
 
 /**
  * assign value to playerChoice variable and pass it to the displayChoice function param
@@ -303,7 +301,6 @@ function battle() {
     let winner;
     const showPlayer = document.getElementById('player-choice');
     const showCmp = document.getElementById('cmp-choice');
-
     // if the player didn't get an option, show the message to ask him to do it
     if (player === undefined) {
         message.textContent = 'You must choose an option';
